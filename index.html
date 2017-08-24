@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to GraphQL for React users | Benjie Gillam</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="styles.css" type='text/css' />
+  </head>
+  <body>
+    <script type="application/javascript" src="remark-latest.min.js"></script>
+    <script type="application/javascript">
+      async function main() {
+        try {
+          const result = await fetch('talk.md');
+          const slideshow = remark.create({
+            source: await result.text(),
+            slideNumberFormat: function (current, total) { return null },
+            ratio: '4:3',
+            highlightLines: true,
+            highlightSpans: false // We need ES6 backticks
+          });
+        } catch (e) {
+          document.body.innerHTML = '<h1>An error ocurred!<' + '/h1>';
+        }
+      }
+      window.syntaxWasValid = true;
+
+      main();
+    </script>
+    <script type="application/javascript">
+      if (!window.syntaxWasValid) {
+        document.write('<h1>A browser that supports async/await is required to view this presentation</' + 'h1>');
+      }
+    </script>
+  </body>
+</html>

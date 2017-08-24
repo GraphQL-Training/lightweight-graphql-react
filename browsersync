@@ -1,0 +1,1 @@
+browser-sync start --no-open --no-ui --server --files index.html --files styles.css --files talk.md
