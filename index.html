@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Introduction to GraphQL for React users | Benjie Gillam</title>
+    <title>Lightweight GraphQL | Introduction to GraphQL without window.fetch() | Benjie Gillam</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="styles.css" type='text/css' />
   </head>
@@ -10,7 +10,7 @@
     <script type="application/javascript">
       async function main() {
         try {
-          const result = await fetch('talk.md');
+          const result = await fetch('slides.md');
           const slideshow = remark.create({
             source: await result.text(),
             slideNumberFormat: function (current, total) { return null },
@@ -18,6 +18,12 @@
             highlightLines: true,
             highlightSpans: false // We need ES6 backticks
           });
+          if (window.___browserSync___) {
+            ___browserSync___.socket.on('reload:slides.md', async () => {
+              const result = await fetch('slides.md');
+              slideshow.loadFromString(await result.text());
+            })
+          }
         } catch (e) {
           document.body.innerHTML = '<h1>An error ocurred!<' + '/h1>';
         }
@@ -25,6 +31,7 @@
       window.syntaxWasValid = true;
 
       main();
+
     </script>
     <script type="application/javascript">
       if (!window.syntaxWasValid) {

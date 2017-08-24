@@ -4,7 +4,8 @@ class: title-page, blue
 <img src='images/react-logo.png' title='React logo' class='react-logo'>
 </div>
 
-## Introduction to GraphQL
+## Lightweight GraphQL
+Just vanilla JS and window.fetch()
 
 ### Benjie Gillam
 
@@ -14,6 +15,7 @@ GraphQL Training,
 <div class='postgraphql-logo-container'>
 <img src='images/postgraphql-logo.png' title='PostGraphQL logo' class='postgraphql-logo'>
 </div>
+
 .slidesLocation[
 
 [benjie.github.io/react-graphql-intro/](https://benjie.github.io/react-graphql-intro/)
