@@ -45,11 +45,13 @@
 .remark-notes-preview h2,
 .remark-notes-preview h3,
 .remark-notes-preview p,
+.remark-notes-preview ul,
 .remark-notes-preview ol,
 .remark-notes h1,
 .remark-notes h2,
 .remark-notes h3,
 .remark-notes p,
+.remark-notes ul,
 .remark-notes ol {
   color: white;
 }
@@ -140,7 +142,7 @@ body {
   font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 
-h1, h2, h3, p, ol {
+h1, h2, h3, p, ol, ul {
   font-weight: normal;
   color: #3d3e56;
 }
@@ -149,7 +151,7 @@ p, h3 {
   font-size: 1.8em;
 }
 
-ol {
+ol, ul {
   font-size: 1.5em;
 }
 
@@ -186,15 +188,15 @@ pre + pre {
 
 /* ----- Template styles ----- */
 
-.brown {
-  background: #0c74d5;
+.black {
+  background: #2d2d2d;
 }
 
-.brown h1,
-.brown h2,
-.brown p,
-.brown .remark-inline-code {
-  color: white
+.black h1,
+.black h2,
+.black p,
+.black .remark-inline-code {
+  color: #ff3333;
 }
 
 .blue {
@@ -413,4 +415,26 @@ code .lolight * {
 code .hilight,
 code .hilight * {
   color: #5DC744 !important;
+}
+
+.graphiqlImage,
+.contextImage {
+  float: right;
+  margin: 30px;
+}
+.graphiqlImage {
+  width: 70%;
+  margin: 0 20px;
+}
+.contextImage {
+  width: 40%;
+  font-size: 0.8em;
+}
+.graphiqlImage img,
+.contextImage img {
+  width: 100%;
+}
+
+.spaceAtTop {
+  margin-top: 60px;
 }
