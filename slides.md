@@ -308,29 +308,284 @@ ReactDOM.render(
 ---
 class: blue center middle
 
-# Step 2: GraphQL API
+# Step 2: GraphQL
 
 ---
 class: has-code
 
-## Initial GraphQL Schema
+GraphQL returns data in shape you request.
+
 --
 
-.spaceAtTop[
+.leftSplit[
+To get:
+
+```json
+{
+  "currentUser": {
+    "name": "Benjie",
+    "website": "https://graphile.org"
+  }
+}
+```
 ]
 
+--
+.rightSplit[
+We request:
+
+```graphql
+{
+  currentUser {
+    name
+    website
+  }
+}
+```
+]
+
+--
+
+.spaceAtTop.clearfix[
+]
+
+But how do we know which fields are available?
+
+---
+class: has-code
+
+## GraphQL Schema
+--
+
+`schema` determines available operation types.
+
+--
+
+```graphql
+schema {
+⁣
+⁣
+⁣
+}
+```
+
+---
+class: has-code
+
+## GraphQL Schema
+
+`schema` determines available operation types.
+
+
+```graphql
+schema {
+  query: Query
+⁣
+⁣
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+`schema` determines available operation types.
+
+
+```graphql
+schema {
+  query: Query
+  mutation: ...
+⁣
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+`schema` determines available operation types.
+
+
+```graphql
+schema {
+  query: Query
+  mutation: ...
+  subscription: ...
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+`schema` determines available operation types.
+
+
+```graphql
+schema {
+* query: Query
+}
+```
+
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
 ```graphql
 schema {
   query: Query
 }
 ```
---
+]
+
+`Query` is the entry-point for reading data.  
+It defines the fields available at the root level.
+```graphql
+type Query {
+⁣
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+]
+
+`Query` is the entry-point for reading data.  
+It defines the fields available at the root level.
+```graphql
+type Query {
+* currentUser: User
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
 ```graphql
 type Query {
   currentUser: User
 }
 ```
---
+]
+
+GraphQL is strongly-typed, so we will know the type(s) each field can return.
+
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+```graphql
+type Query {
+  currentUser: User
+}
+```
+]
+
+GraphQL is strongly-typed, so we will know the type(s) each field can return.
+```graphql
+type User {
+⁣
+⁣
+⁣
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+```graphql
+type Query {
+  currentUser: User
+}
+```
+]
+
+GraphQL is strongly-typed, so we will know the type(s) each field can return.
+```graphql
+type User {
+  id: Int!
+⁣
+⁣
+}
+```
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+```graphql
+type Query {
+  currentUser: User
+}
+```
+]
+
+GraphQL is strongly-typed, so we will know the type(s) each field can return.
+```graphql
+type User {
+  id: Int!
+  name: String!
+⁣
+}
+```
+
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+```graphql
+type Query {
+  currentUser: User
+}
+```
+]
+
+GraphQL is strongly-typed, so we will know the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
@@ -338,18 +593,35 @@ type User {
   website: String
 }
 ```
-
-
 ---
 class: has-code
 
-## Initial GraphQL Schema
+## GraphQL Schema
+
+```graphql
+schema {
+  query: Query
+}
+```
+```graphql
+type Query {
+  currentUser: User
+}
+```
+```graphql
+type User {
+  id: Int!
+  name: String!
+  website: String
+}
+```
+---
+class: has-code
+
+## GraphQL Schema / GraphiQL
 
 .graphiqlImage[
 ![GraphiQL](images/graphiql.png)
-]
-
-.spaceAtTop[
 ]
 
 ```graphql

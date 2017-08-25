@@ -438,3 +438,20 @@ code .hilight * {
 .spaceAtTop {
   margin-top: 60px;
 }
+
+.leftSplit {
+  width: 50%;
+  float: left;
+}
+.rightSplit {
+  width: 50%;
+  float: left;
+}
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+ }
