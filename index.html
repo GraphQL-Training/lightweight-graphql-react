@@ -32,15 +32,15 @@
                   for (; i < l; i++) {
                     const oldChr = lastSource[i];
                     const newChr = newSource[i];
-                    if (oldChr !== newChr) {
-                      slideshow.gotoSlide(slideNumber);
-                      break;
-                    }
                     if (oldChr === '\n') {
                       if (lastSource.substr(i+1, 4).match(/^---?\n/)) {
                         // TODO: don't let this break inside code blocks
                         slideNumber++;
                       }
+                    }
+                    if (oldChr !== newChr) {
+                      slideshow.gotoSlide(slideNumber);
+                      break;
                     }
                   }
                   if (i === l) {
