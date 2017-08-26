@@ -344,11 +344,8 @@ We request:
 ```
 ]
 
---
 
-.spaceAtTop.clearfix[
-]
-
+???
 But how do we know which fields are available?
 
 ---
@@ -359,7 +356,6 @@ class: has-code
 
 `schema` determines available operation types.
 
---
 
 ```graphql
 schema {
@@ -379,7 +375,7 @@ class: has-code
 
 ```graphql
 schema {
-  query: Query
+  query: ...
 ⁣
 ⁣
 }
@@ -394,7 +390,7 @@ class: has-code
 
 ```graphql
 schema {
-  query: Query
+  query: ...
   mutation: ...
 ⁣
 }
@@ -409,7 +405,7 @@ class: has-code
 
 ```graphql
 schema {
-  query: Query
+  query: ...
   mutation: ...
   subscription: ...
 }
@@ -465,9 +461,52 @@ schema {
 It defines the fields available at the root level.
 ```graphql
 type Query {
+  currentUser: ...
+}
+```
+
+
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+]
+
+```graphql
+type Query {
+  currentUser: ...
+}
+```
+
+--
+
+GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+---
+class: has-code
+
+## GraphQL Schema
+
+.context[
+```graphql
+schema {
+  query: Query
+}
+```
+]
+
+```graphql
+type Query {
 * currentUser: User
 }
 ```
+GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ---
 class: has-code
 
@@ -486,27 +525,8 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we will know the type(s) each field can return.
+GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 
----
-class: has-code
-
-## GraphQL Schema
-
-.context[
-```graphql
-schema {
-  query: Query
-}
-```
-```graphql
-type Query {
-  currentUser: User
-}
-```
-]
-
-GraphQL is strongly-typed, so we will know the type(s) each field can return.
 ```graphql
 type User {
 ⁣
@@ -532,7 +552,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we will know the type(s) each field can return.
+GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
@@ -558,7 +578,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we will know the type(s) each field can return.
+GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
@@ -585,7 +605,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we will know the type(s) each field can return.
+GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
