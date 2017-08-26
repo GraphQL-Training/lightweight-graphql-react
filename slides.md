@@ -236,7 +236,7 @@ class SettingsPage extends React.Component {
 ```
 ]
 ```js
-const Page = ({currentUser}) =>
+const Layout = ({currentUser}) =>
   <div>
     <Header currentUser={currentUser} />
     <SettingsPage
@@ -289,7 +289,7 @@ class SettingsPage extends React.Component {
 }
 ```
 ```js
-const Page = ({currentUser}) =>
+const Layout = ({currentUser}) =>
   <div>
     <Header currentUser={currentUser} />
     <SettingsPage
@@ -300,7 +300,7 @@ const Page = ({currentUser}) =>
 
 ```js
 ReactDOM.render(
-  <Page {...MOCK_DATA} />,
+  <Layout {...MOCK_DATA} />,
   document.getElementById('react')
 );
 ```
