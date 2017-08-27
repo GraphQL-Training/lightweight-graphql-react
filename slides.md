@@ -308,7 +308,7 @@ ReactDOM.render(
 ---
 class: blue center middle
 
-# Step 2: GraphQL
+# Step 2: GraphQL Client
 
 ---
 class: has-code
@@ -661,3 +661,115 @@ type User {
   website: String
 }
 ```
+
+---
+class: has-code
+
+In the browser we need a boiler-plate fetch:
+
+```js
+window.fetch("/graphql", {
+```
+--
+```js
+  method: "POST",
+```
+--
+```js
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"},
+```
+--
+```js
+  body: JSON.stringify({
+*   query: "query { currentUser { id name website } }",
+*   variables: {}})
+```
+--
+```js
+}).then(response => response.json())
+```
+
+---
+class: has-code
+
+.context[
+In the browser we need a boiler-plate fetch:
+
+```js
+window.fetch("/graphql", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"},
+  body: JSON.stringify({
+    query: "query { currentUser { id name website } }",
+    variables: {}})
+}).then(response => response.json())
+```
+]
+
+--
+
+So we should made a React HOC with this API:
+
+--
+
+```js
+const ComponentWithData =
+  withGraphQLResult(
+    query,
+    { variables } = {} // < optional options
+  )(Component)
+```
+
+---
+class: has-code
+
+Then every component
+
+```js
+const Header = ({data: {currentUser}}) =>
+  <nav>
+    <a href='/'>MyWebsite</a>
+    {currentUser
+      ? <a>{currentUser.name}</a>
+      : <a href='/login'>Login</a>
+    }
+  </nav>;
+```
+can easily fetch data from GraphQL:
+
+--
+
+```js
+module.exports = withGraphQLResult(`
+  query HeaderData {
+    currentUser {
+      name
+    }
+  }
+`)(Header)
+```
+
+---
+
+But doing a network fetch for every component is inefficient.
+
+--
+
+We can fetch all the data for the entire layout with just one network request.
+
+--
+
+But how do we prevent our components being tightly bound?
+
+--
+
+What if a deep component needs an extra bit of data, must we edit it's great grandparent?
+
+---
+class: blue center middle
+
+# Step 3: Fragments

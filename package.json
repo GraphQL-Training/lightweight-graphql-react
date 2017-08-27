@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "./browsersync"
+  },
   "dependencies": {
     "browser-sync": "^2.18.13"
   }
