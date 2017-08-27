@@ -773,3 +773,61 @@ What if a deep component needs an extra bit of data, must we edit it's great gra
 class: blue center middle
 
 # Step 3: Fragments
+
+---
+
+By splitting our data requirements into fragments we can
+keep their specification close to the components
+that need them.
+
+--
+
+GraphQL will then resolve all these fragments for us
+and request the minimum information required to
+satisfy them.
+
+---
+class: has-code
+
+```js
+Header.HeaderUserFragment = `
+  fragment HeaderUserFragment on User {
+    id
+    name
+  }`;
+```
+
+--
+
+```js
+SettingsPage.SettingsPageUserFragment = `
+  fragment SettingsPageUserFragment on User {
+    id
+    name
+    website
+  }`;
+```
+
+--
+
+```js
+const Root = withGraphQLResult(`
+  query SettingsPageRootQuery {
+    currentUser {
+      ...HeaderUserFragment
+      ...SettingsPageUserFragment
+    }
+  }
+
+  ${Header.HeaderUserFragment}
+  ${SettingsPage.SettingsPageUserFragment}
+`)(Layout);
+```
+
+---
+class: black center middle
+
+
+
+⚠️ Simple string concatenation, as we do here, will not allow the same fragment
+twice - use a tool such as Apollo or Relay to solve this! ⚠️
