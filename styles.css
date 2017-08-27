@@ -205,7 +205,7 @@ pre + pre {
 .blue h1, .blue h2, .blue h3 {
   color: white
 }
-.blue p {
+.blue p, .blue code {
   color: #a4f0FF;
 }
 

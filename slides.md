@@ -831,3 +831,47 @@ class: black center middle
 
 ⚠️ Simple string concatenation, as we do here, will not allow the same fragment
 twice - use a tool such as Apollo or Relay to solve this! ⚠️
+
+---
+class: blue center middle
+
+## Step 4: Another attribute
+
+`avatarUrl` added to GraphQL Schema
+
+---
+class: has-code
+
+Add `avatarUrl` to our React component:
+
+```js
+const Header = ({data: {currentUser,
+* avatarUrl}}) =>
+  <nav><a href='/'>MyWebsite</a>
+    {currentUser
+      ? <a>
+*         {avatarUrl && <img src={avatarUrl} />}
+          {currentUser.name}
+        </a>
+      : <a href='/login'>Login</a>}</nav>;
+```
+
+--
+
+Add it to the fragment:
+
+```js
+Header.HeaderUserFragment = `
+  fragment HeaderUserFragment on User {
+    id
+    name
+*   avatarUrl
+  }`;
+```
+
+---
+class: center middle
+
+# That was it!
+
+Layout doesn't know or care it was added!
