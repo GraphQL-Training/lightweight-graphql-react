@@ -1094,3 +1094,39 @@ mutation UpdateCurrentUserMutation(
   }
 }
 ```
+
+---
+class: has-code
+
+In the browser we can just perform a fetch again:
+
+```js
+const mutationQuery = `
+mutation UpdateCurrentUserMutation($patch: UserPatch!) {
+  updateCurrentUser(input: { userPatch: $patch }) {
+    user { id name website }
+  }
+}`;
+```
+--
+```js
+window.fetch("/graphql", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"},
+  body: JSON.stringify({
+```
+--
+```js
+    query: mutationQuery,
+```
+--
+```js
+    variables: {
+      patch: {
+        website: "https://twitter.com/benjie"
+      }
+    }})
+})
+```
