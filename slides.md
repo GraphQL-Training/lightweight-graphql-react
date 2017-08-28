@@ -1012,3 +1012,85 @@ Layout doesn't know or care it was added.
 class: blue center middle
 
 ## Step 5: Mutations
+
+---
+class: has-code
+
+.contextImage[
+.context[
+```graphql
+query NameAndWebsiteQuery {
+  currentUser {
+    name
+    website
+  }
+}
+```
+]
+]
+
+### Anatomy of a Mutation
+
+--
+
+```js
+mutation UpdateCurrentUserMutation(
+⁣
+) {
+```
+---
+class: has-code
+
+.contextImage[
+.context[
+```graphql
+query NameAndWebsiteQuery {
+  currentUser {
+    name
+    website
+  }
+}
+```
+]
+]
+
+### Anatomy of a Mutation
+
+```js
+mutation UpdateCurrentUserMutation(
+  $patch: UserPatch!
+) {
+```
+--
+```js
+  updateCurrentUser(
+```
+--
+```js
+    input: {
+```
+--
+```js
+      userPatch: $patch
+```
+--
+```js
+    }
+  ) {
+```
+--
+```js
+    user {
+```
+--
+```js
+      id
+      name
+      website
+```
+--
+```js
+    }
+  }
+}
+```
