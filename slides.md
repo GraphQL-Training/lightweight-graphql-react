@@ -353,7 +353,7 @@ We request:
 .rightDiv[
 or
 ```graphql
-query NameAndWebsiteQuery {
+*query NameAndWebsiteQuery {
   currentUser {
     name
     website
