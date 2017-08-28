@@ -739,9 +739,11 @@ const Header = ({data: {currentUser}}) =>
     }
   </nav>;
 ```
-can easily fetch data from GraphQL:
 
 --
+
+can easily fetch data from GraphQL:
+
 
 ```js
 module.exports = withGraphQLResult(`
@@ -754,20 +756,37 @@ module.exports = withGraphQLResult(`
 ```
 
 ---
+class: noop
 
-But doing a network fetch for every component is inefficient.
 
---
-
-We can fetch all the data for the entire layout with just one network request.
+Pros
 
 --
 
-But how do we prevent our components being tightly bound?
+- Every component is independent
+--
+
+- Required data co-located with the component
+--
+
+- Easy to add data for a component
+--
+
+
+Cons
 
 --
 
-What if a deep component needs an extra bit of data, must we edit it's great grandparent?
+
+- Multiple requests to server
+--
+
+- Extremely inefficient
+
+--
+
+How can we solve this?
+
 
 ---
 class: blue center middle
@@ -776,11 +795,26 @@ class: blue center middle
 
 ---
 
+## Fragments
+
+Shared pieces of query logic that can be composed.
+
+--
+
+Each component can have fragments; root component combines the relevant
+fragments together to form the GraphQL query.
+
+--
+
+GraphQL will request the minimum information required to satisfy all specified
+fragments.
+
+
+???
+
 By splitting our data requirements into fragments we can
 keep their specification close to the components
 that need them.
-
---
 
 GraphQL will then resolve all these fragments for us
 and request the minimum information required to
@@ -789,10 +823,92 @@ satisfy them.
 ---
 class: has-code
 
+## Anatomy of a Fragment
+
+--
+
+.leftSplit[
+```graphql
+fragment HeaderUserFragment on User {
+  id
+  name
+}
+```
+]
+
+---
+class: has-code
+
+## Anatomy of a Fragment
+
+.leftSplit[
+```graphql
+fragment HeaderUserFragment on User {
+  id
+  name
+}
+```
+
+```graphql
+query SettingsPageRootQuery {
+  currentUser {
+    id
+    ...HeaderUserFragment
+  }
+}
+```
+]
+
+---
+class: has-code
+
+## Anatomy of a Fragment
+
+.leftSplit[
+
+```graphql
+fragment HeaderUserFragment on User {
+  id
+  name
+}
+```
+
+```graphql
+query SettingsPageRootQuery {
+  currentUser {
+    id
+    ...HeaderUserFragment
+  }
+}
+```
+]
+
+.rightSplit[
+```graphql
+⁣
+⁣
+query SettingsPageRootQuery {
+  currentUser {
+    id
+    id
+    name
+  }
+}
+```
+]
+
+---
+class: has-code
+
+.contextImage[
+![Spec](images/spec.png)
+]
+
+--
+
 ```js
 Header.HeaderUserFragment = `
   fragment HeaderUserFragment on User {
-    id
     name
   }`;
 ```
@@ -802,7 +918,6 @@ Header.HeaderUserFragment = `
 ```js
 SettingsPage.SettingsPageUserFragment = `
   fragment SettingsPageUserFragment on User {
-    id
     name
     website
   }`;
