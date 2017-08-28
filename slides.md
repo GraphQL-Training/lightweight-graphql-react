@@ -989,4 +989,4 @@ class: center middle
 
 # That was it!
 
-Layout doesn't know or care it was added!
+Layout doesn't know or care it was added.
