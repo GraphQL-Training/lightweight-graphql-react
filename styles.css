@@ -373,6 +373,10 @@ pre + pre {
   color: #81a2be;
 }
 
+.hljs-default .hljs-section{
+  color: #cc4444;
+}
+
 .hljs-keyword, .hljs-javascript .function {
   color: #7D8FB0;
   font-weight: normal !important;
