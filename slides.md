@@ -345,6 +345,22 @@ We request:
 ```
 ]
 
+--
+
+.clearfix[
+]
+
+.rightDiv[
+or
+```graphql
+query NameAndWebsiteQuery {
+  currentUser {
+    name
+    website
+  }
+}
+```
+]
 
 ???
 But how do we know which fields are available?
@@ -991,3 +1007,8 @@ class: center middle
 # That was it!
 
 Layout doesn't know or care it was added.
+
+---
+class: blue center middle
+
+## Step 5: Mutations

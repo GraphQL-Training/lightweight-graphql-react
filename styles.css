@@ -448,6 +448,14 @@ code .hilight * {
   float: left;
 }
 
+.rightDiv p {
+  margin-top: 10px;
+}
+.rightDiv {
+  width: 50%;
+  margin: 0 0 0 auto;
+}
+
 .clearfix:after {
    content: " "; /* Older browser do not support empty content */
    visibility: hidden;
