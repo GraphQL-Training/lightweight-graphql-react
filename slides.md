@@ -1087,15 +1087,12 @@ class: has-code
 .contextImage[
 .context[
 ```graphql
-fragment HeaderUserFragment on User {
-  id
-  name
-  avatarUrl
-}
-
-fragment SettingsPageUserFragment on User {
-  name
-  website
+query NameAndWebsiteQuery {
+  currentUser {
+    id
+    name
+    website
+  }
 }
 ```
 ]
@@ -1139,6 +1136,8 @@ mutation UpdateCurrentUserMutation(
     }
   }
 }
+fragment HeaderUserFragment on User { ... }
+fragment SettingsPageUserFragment on User { ... }
 ```
 
 ---
