@@ -967,6 +967,10 @@ SettingsPage.SettingsPageUserFragment = `
 
 --
 
+.hack[
+#### The final query built via string concatenation:
+]
+
 ```js
 const Root = withGraphQLResult(`
   query SettingsPageRootQuery {

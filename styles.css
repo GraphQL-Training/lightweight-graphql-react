@@ -44,12 +44,18 @@
 .remark-notes-preview h1,
 .remark-notes-preview h2,
 .remark-notes-preview h3,
+.remark-notes-preview h4,
+.remark-notes-preview h5,
+.remark-notes-preview h6,
 .remark-notes-preview p,
 .remark-notes-preview ul,
 .remark-notes-preview ol,
 .remark-notes h1,
 .remark-notes h2,
 .remark-notes h3,
+.remark-notes h4,
+.remark-notes h5,
+.remark-notes h6,
 .remark-notes p,
 .remark-notes ul,
 .remark-notes ol {
@@ -143,7 +149,7 @@ body {
   font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 
-h1, h2, h3, p, ol, ul {
+h1, h2, h3, h4, h5, h6, p, ol, ul {
   font-weight: normal;
   color: #3d3e56;
 }
@@ -205,13 +211,22 @@ pre + pre {
 }
 
 .black h1,
-.black h2 {
+.black h2,
+.black h3,
+.black h4,
+.black h5,
+.black h6 {
   color: #ff3333;
 }
 .blue {
   background: #0c74d5;
 }
-.blue h1, .blue h2, .blue h3 {
+.blue h1,
+.blue h2,
+.blue h3,
+.blue h4,
+.blue h5,
+.blue h6 {
   color: white
 }
 .blue p, .blue code {
@@ -265,7 +280,13 @@ pre + pre {
   background-image: url('images/hot-storybook.gif');
 }
 
-.postgraphql-is h1, .postgraphql-is h2, .postgraphql-is h3, .postgraphql-is a {
+.postgraphql-is h1,
+.postgraphql-is h2,
+.postgraphql-is h3,
+.postgraphql-is h4,
+.postgraphql-is h5,
+.postgraphql-is h6,
+.postgraphql-is a {
   color: black;
   text-shadow: 1px 1px 2px white;
 }
@@ -312,7 +333,13 @@ pre + pre {
   padding: 0 2em
 }
 
-.has-code h1, .has-code h2, .has-code h3, .has-code p {
+.has-code h1,
+.has-code h2,
+.has-code h3,
+.has-code h4,
+.has-code h5,
+.has-code h6,
+.has-code p {
   color: #EBEAEA
 }
 
