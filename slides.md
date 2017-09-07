@@ -759,8 +759,17 @@ const ComponentWithData =
   )(Component)
 ```
 
+--
+
+.slidesLocation[
+#### `withGraphQLResult` source is in step 2 of the example repo [is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
+]
+
 ---
 class: has-code
+.slidesLocation[
+#### `withGraphQLResult` source is in step 2 of the example repo [is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
+]
 
 Then every component
 
@@ -777,12 +786,16 @@ can easily fetch data from GraphQL:
 module.exports =
   withGraphQLResult(`{ currentUser { name } }`)(Header)
 ```
+
 ---
 class: noop
 
 
 Pros
 
+.slidesLocation[
+#### `withGraphQLResult` source is in step 2 of the example repo [is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
+]
 --
 
 - Every component is independent

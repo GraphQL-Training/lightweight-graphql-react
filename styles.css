@@ -98,6 +98,10 @@
   color: black;
   text-shadow: 1px 1px 2px white;
 }
+.has-code .slidesLocation p a {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
 
 #backbone1 h1,
 #backbone2 h1,
