@@ -155,6 +155,13 @@ ol, ul {
   font-size: 1.5em;
 }
 
+ol ul,
+ol ol,
+ul ol,
+ul ul {
+  font-size: 1em;
+}
+
 
 a,
 strong {
@@ -466,4 +473,9 @@ code .hilight * {
    display: block;
    height: 0;
    clear: both;
+ }
+
+ .tiny {
+   font-size: 5pt;
+   text-align: right;
  }

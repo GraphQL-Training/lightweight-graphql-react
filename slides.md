@@ -8,7 +8,7 @@ class: title-page, blue
 
 ### Benjie Gillam
 
-GraphQL-Training.com,  
+GraphQL Trainer  
 [PostGraphQL](https://github.com/postgraphql/postgraphql) OSS maintainer
 
 <div class='postgraphql-logo-container'>
@@ -17,7 +17,7 @@ GraphQL-Training.com,
 
 .slidesLocation[
 
-[benjie.github.io/react-graphql-intro/](https://benjie.github.io/react-graphql-intro/)
+[graphql-training.com/lightweight-graphql-react](https://www.graphql-training.com/lightweight-graphql-react)
 ]
 
 ???
@@ -747,14 +747,8 @@ class: has-code
 Then every component
 
 ```js
-const Header = ({data: {currentUser}}) =>
-  <nav>
-    <a href='/'>MyWebsite</a>
-    {currentUser
-      ? <a>{currentUser.name}</a>
-      : <a href='/login'>Login</a>
-    }
-  </nav>;
+const Header = ({ data: { currentUser: { name } } }) =>
+  <nav>... { name } ...</nav>;
 ```
 
 --
@@ -846,6 +840,26 @@ class: has-code
 
 .leftSplit[
 ```graphql
+fragment HeaderUserFragment
+```
+]
+---
+class: has-code
+
+## Anatomy of a Fragment
+
+.leftSplit[
+```graphql
+fragment HeaderUserFragment on User
+```
+]
+---
+class: has-code
+
+## Anatomy of a Fragment
+
+.leftSplit[
+```graphql
 fragment HeaderUserFragment on User {
   id
   name
@@ -870,7 +884,7 @@ fragment HeaderUserFragment on User {
 query SettingsPageRootQuery {
   currentUser {
     id
-    ...HeaderUserFragment
+*   ...HeaderUserFragment
   }
 }
 ```
@@ -894,7 +908,7 @@ fragment HeaderUserFragment on User {
 query SettingsPageRootQuery {
   currentUser {
     id
-    ...HeaderUserFragment
+*   ...HeaderUserFragment
   }
 }
 ```
@@ -907,8 +921,8 @@ query SettingsPageRootQuery {
 query SettingsPageRootQuery {
   currentUser {
     id
-    id
-    name
+*   id
+*   name
   }
 }
 ```
@@ -1021,6 +1035,7 @@ class: has-code
 ```graphql
 query NameAndWebsiteQuery {
   currentUser {
+    id
     name
     website
   }
@@ -1044,11 +1059,15 @@ class: has-code
 .contextImage[
 .context[
 ```graphql
-query NameAndWebsiteQuery {
-  currentUser {
-    name
-    website
-  }
+fragment HeaderUserFragment on User {
+  id
+  name
+  avatarUrl
+}
+
+fragment SettingsPageUserFragment on User {
+  name
+  website
 }
 ```
 ]
@@ -1084,9 +1103,8 @@ mutation UpdateCurrentUserMutation(
 ```
 --
 ```js
-      id
-      name
-      website
+      ...HeaderUserFragment
+      ...SettingsPageUserFragment
 ```
 --
 ```js
@@ -1098,13 +1116,28 @@ mutation UpdateCurrentUserMutation(
 ---
 class: has-code
 
-In the browser we can just perform a fetch again:
+To perform the mutation, we can use `fetch` again:
+
+--
+
+.center[
+![make fetch happen](images/make-fetch-happen.gif)
+]
+
+.tiny[
+https://media.giphy.com/media/5G98t8QjqBLK8/giphy.gif
+]
+
+---
+class: has-code
+
+To perform the mutation, we can use `fetch` again:
 
 ```js
 const mutationQuery = `
 mutation UpdateCurrentUserMutation($patch: UserPatch!) {
   updateCurrentUser(input: { userPatch: $patch }) {
-    user { id name website }
+    user { ...HeaderUserFragment ...SettingsPageUserFragment }
   }
 }`;
 ```
@@ -1130,3 +1163,41 @@ window.fetch("/graphql", {
     }})
 })
 ```
+
+---
+
+Using the data from the payload we can then update the display.
+
+--
+
+Tools like Apollo and Relay managing your store/cache for you and tell React to
+re-render.
+
+--
+
+Relay uses the global object identifier specification (node ID) as the cache key.
+
+--
+
+Apollo is more flexible, allowing you to specify `dataIdFromObject` (commonly a
+combination of `__typename` and `id` or similar).
+
+---
+class: blue center middle
+
+# Conclusion
+
+---
+
+We've covered:
+
+- Brief overview of a simple GraphQL Schema
+- Querying and performing mutations against a GraphQL server with `window.fetch()`
+  - `query` string expressing fields to request
+  - `variables` expressing inputs to fields (optional)
+  - Mutations are very similar to queries
+- Fragments keep data specs DRY
+- Tooling (e.g. Apollo & Relay) does a lot of work for us
+
+Slides: https://www.graphql-training.com/react-graphql-intro/
+Example project: https://github.com/GraphQLTraining/lightweight-graphql-example
