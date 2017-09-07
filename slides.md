@@ -1102,7 +1102,7 @@ query NameAndWebsiteQuery {
 
 ```js
 mutation UpdateCurrentUserMutation(
-  $patch: UserPatch!
+  $userChanges: UserPatch!
 ) {
 ```
 --
@@ -1115,7 +1115,7 @@ mutation UpdateCurrentUserMutation(
 ```
 --
 ```js
-      userPatch: $patch
+      userPatch: $userChanges
 ```
 --
 ```js
@@ -1162,8 +1162,8 @@ To perform the mutation, we can use `fetch` again:
 
 ```js
 const mutationQuery = `
-mutation UpdateCurrentUserMutation($patch: UserPatch!) {
-  updateCurrentUser(input: { userPatch: $patch }) {
+mutation UpdateCurrentUserMutation($userChanges: UserPatch!) {
+  updateCurrentUser(input: { userPatch: $userChanges }) {
     user { ...HeaderUserFragment ...SettingsPageUserFragment }
   }
 }`;
@@ -1184,7 +1184,7 @@ window.fetch("/graphql", {
 --
 ```js
     variables: {
-      patch: {
+      userChanges: { // This goes into the `$userChanges` variable in GraphQL
         website: "https://twitter.com/benjie"
       }
     }})
