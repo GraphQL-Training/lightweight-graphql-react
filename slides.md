@@ -981,7 +981,7 @@ SettingsPage.SettingsPageUserFragment = `
 --
 
 .hack[
-#### The final query built via string concatenation:
+#### The final query built via string interpolation:
 ]
 
 ```js
