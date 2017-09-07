@@ -1188,16 +1188,33 @@ class: blue center middle
 # Conclusion
 
 ---
+.slidesLocation[
+Twitter: @Benjie  
+Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
+Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
+]
 
 We've covered:
 
+--
+
 - Brief overview of a simple GraphQL Schema
-- Querying and performing mutations against a GraphQL server with `window.fetch()`
+--
+
+- GraphQL queries and mutations with `window.fetch()`
+--
+
   - `query` string expressing fields to request
+--
+
   - `variables` expressing inputs to fields (optional)
+--
+
   - Mutations are very similar to queries
+--
+
 - Fragments keep data specs DRY
+--
+
 - Tooling (e.g. Apollo & Relay) does a lot of work for us
 
-Slides: https://www.graphql-training.com/react-graphql-intro/
-Example project: https://github.com/GraphQLTraining/lightweight-graphql-example

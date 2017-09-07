@@ -76,6 +76,7 @@
   position: absolute;
   bottom: 0;
   right: 30px;
+  text-align: right;
 }
 
 .slidesLocation p {
