@@ -154,6 +154,7 @@ const MOCK_DATA = {
 &nbsp;
 ]
 
+
 ```js
 const Header = ({currentUser}) =>
   <nav>
@@ -772,17 +773,10 @@ const Header = ({ data: { currentUser: { name } } }) =>
 
 can easily fetch data from GraphQL:
 
-
 ```js
-module.exports = withGraphQLResult(`
-  query HeaderData {
-    currentUser {
-      name
-    }
-  }
-`)(Header)
+module.exports =
+  withGraphQLResult(`{ currentUser { name } }`)(Header)
 ```
-
 ---
 class: noop
 
@@ -977,13 +971,13 @@ SettingsPage.SettingsPageUserFragment = `
 const Root = withGraphQLResult(`
   query SettingsPageRootQuery {
     currentUser {
-      ...HeaderUserFragment
-      ...SettingsPageUserFragment
+*     ...HeaderUserFragment
+*     ...SettingsPageUserFragment
     }
   }
 
-  ${Header.HeaderUserFragment}
-  ${SettingsPage.SettingsPageUserFragment}
+* ${Header.HeaderUserFragment}
+* ${SettingsPage.SettingsPageUserFragment}
 `)(Layout);
 ```
 
@@ -1187,7 +1181,7 @@ Using the data from the payload we can then update the display.
 
 --
 
-Tools like Apollo and Relay managing your store/cache for you and tell React to
+Tools like Apollo and Relay manage your store/cache for you and tell React to
 re-render.
 
 --
