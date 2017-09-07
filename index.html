@@ -4,10 +4,30 @@
     <title>Lightweight GraphQL | Introduction to GraphQL without window.fetch() | Benjie Gillam</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="styles.css" type='text/css' />
+    <link rel="stylesheet" href="prism-twilight.min.css" type='text/css' />
   </head>
   <body>
     <script type="application/javascript" src="remark-latest.min.js"></script>
+    <script type="application/javascript" src="prism.min.js" data-manual></script>
+    <script type="application/javascript" src="prism-graphql.min.js" data-manual></script>
+    <script type="application/javascript" src="prism-jsx.min.js" data-manual></script>
+    <script type="application/javascript" src="prism-json.min.js" data-manual></script>
     <script type="application/javascript">
+      function parseLanguage(lang) {
+        return {
+          js: 'jsx',
+        }[lang] || lang;
+      }
+      remark.highlighter.engine.highlightBlock = block => {
+        const language = parseLanguage(block.className.split(" ")[0]);
+        const prismLang = Prism.languages[language];
+        if (prismLang) {
+          block.parentNode.className = `${block.parentNode.className} language-${language}`;
+          block.innerHTML = Prism.highlight(block.textContent, prismLang);
+        } else {
+          console.warn(`Language '${language}' not supported?`)
+        }
+      };
       async function main() {
         try {
           const result = await fetch('slides.md');
@@ -54,6 +74,7 @@
             })
           }
         } catch (e) {
+          console.error(e);
           document.body.innerHTML = '<h1>An error ocurred!<' + '/h1>';
         }
       }
