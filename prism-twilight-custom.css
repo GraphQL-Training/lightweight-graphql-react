@@ -26,11 +26,6 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-pre[class*="language-"],
-:not(pre) > code[class*="language-"] {
-	background: hsl(0, 0%, 8%); /* #141414 */
-}
-
 /* Code blocks */
 pre[class*="language-"] {
 	overflow: auto;
