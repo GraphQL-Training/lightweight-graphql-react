@@ -23,7 +23,31 @@
         const prismLang = Prism.languages[language];
         if (prismLang) {
           block.parentNode.className = `${block.parentNode.className} language-${language}`;
-          block.innerHTML = Prism.highlight(block.textContent, prismLang);
+          const html = Prism.highlight(block.textContent, prismLang);
+          const lines = html.split(`\n`);
+          let currentSpan = null;
+          for (var i = 0; i < lines.length; i++) {
+            let line = lines[i];
+            if (currentSpan) {
+              line = currentSpan + line;
+              currentSpan = null;
+            }
+            const openTags = [];
+            const re = /(<span[^>]*>|<\/span>)/gi;
+            let matches;
+            while ((matches = re.exec(line)) != null) {
+              const tag = matches[1];
+              if (tag[1] === '/') {
+                openTags.pop();
+              } else {
+                openTags.push(tag);
+              }
+            }
+            currentSpan = openTags.join('');
+            line = line + ('</' + 'span>').repeat(openTags.length);
+            lines[i] = line;
+          }
+          block.innerHTML = lines.join('\n');
         } else {
           console.warn(`Language '${language}' not supported?`)
         }
