@@ -49,15 +49,32 @@ course if you want to follow along on your phone or laptop, please do!
 - ✅ React
 
 ---
-class: black center middle
+class: black center
 
 ## DISCLAIMER
 
-???
+--
 
-- NOT how you should build an app
-- Tooling does a lot for you, but it can be complex.
-- Good to understand what's going on under the covers
+This talk does not demonstrate best practices.
+
+--
+
+.smallprint[
+Examples in this talk and the associated GitHub repository have been
+deliberately simplified to ease understanding. GraphQL tooling does a lot for
+you and you should embrace it in any GraphQL projects you work on; however
+trying to master the tooling at the same time as the new query language can
+cause headaches, stress, feelings of being overwhelmed and in some extreme
+cases desk inversion.
+Nullam ac lectus at neque convallis tempus. Nam augue
+risus, hendrerit vel ligula sed, sagittis pretium felis. Aenean vitae ipsum nec
+nisl faucibus venenatis. Sed sed blandit diam. Quisque et nunc vel orci
+sollicitudin vestibulum. Donec tempor felis nec mauris fermentum, id placerat
+lorem luctus. Fusce molestie augue ultrices, efficitur arcu sit amet, accumsan
+tortor. Vivamus facilisis sapien non sagittis feugiat. Nam dignissim dictum
+finibus. Donec sed nisl eget risus dictum gravida. Sed sit amet nulla sapien.
+
+]
 
 ---
 class: has-code center

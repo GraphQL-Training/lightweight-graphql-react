@@ -200,13 +200,14 @@ pre + pre {
   background: #2d2d2d;
 }
 
-.black h1,
-.black h2,
-.black p,
-.black .remark-inline-code {
-  color: #ff3333;
+.black * {
+  color: white;
 }
 
+.black h1,
+.black h2 {
+  color: #ff3333;
+}
 .blue {
   background: #0c74d5;
 }
@@ -479,4 +480,8 @@ code .hilight * {
  .tiny {
    font-size: 5pt;
    text-align: right;
+ }
+
+ .smallprint {
+   font-size: 0.6em;
  }
