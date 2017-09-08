@@ -1185,9 +1185,10 @@ class: has-code
 
 .contextImage[
 .context[
+#### Remember our query anatomy?
 ```graphql
-query NameAndWebsiteQuery {
-  currentUser {
+query NameAndWebsiteQuery($id: Int!) {
+  user(id: Int!): User
     id
     name
     website
@@ -1211,9 +1212,10 @@ class: has-code
 
 .contextImage[
 .context[
+#### Remember our query anatomy?
 ```graphql
-query NameAndWebsiteQuery {
-  currentUser {
+query NameAndWebsiteQuery($id: Int!) {
+  user(id: Int!): User
     id
     name
     website
@@ -1253,68 +1255,56 @@ mutation UpdateCurrentUserMutation(
 ```
 --
 ```js
-      ...HeaderUserFragment
-      ...SettingsPageUserFragment
+      id
+      name
+      website
 ```
 --
 ```js
     }
   }
 }
-fragment HeaderUserFragment on User { ... }
-fragment SettingsPageUserFragment on User { ... }
 ```
 
 ---
 class: has-code
-
-To perform the mutation, we can use `fetch` again:
-
---
-
-.center[
-![make fetch happen](images/make-fetch-happen.gif)
-]
-
-.tiny[
-https://media.giphy.com/media/5G98t8QjqBLK8/giphy.gif
-]
-
----
-class: has-code
-
-To perform the mutation, we can use `fetch` again:
 
 ```js
 const mutationQuery = `
-mutation UpdateCurrentUserMutation($userChanges: UserPatch!) {
-  updateCurrentUser(input: { userPatch: $userChanges }) {
-    user { ...HeaderUserFragment ...SettingsPageUserFragment }
+  mutation UpdateCurrentUserMutation($userChanges: UserPatch!) {
+    updateCurrentUser(input: { userPatch: $userChanges }) {
+      user { ...HeaderUserFragment ...SettingsPageUserFragment }
+    }
+  }`;
+```
+--
+To perform the mutation, we can use our helper:
+
+--
+
+```js
+executeGraphQLQuery(mutationQuery, {
+```
+
+--
+
+```js
+  userChanges: { // This goes into the `$userChanges` variable
+```
+--
+```js
+    website: "https://twitter.com/benjie"
+```
+--
+```js
   }
-}`;
-```
---
-```js
-window.fetch("/graphql", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"},
-  body: JSON.stringify({
-```
---
-```js
-    query: mutationQuery,
-```
---
-```js
-    variables: {
-      userChanges: { // This goes into the `$userChanges` variable in GraphQL
-        website: "https://twitter.com/benjie"
-      }
-    }})
+
 })
 ```
+
+--
+
+Queries and mutations use the same API - `query` and `variables`.
 
 ---
 
