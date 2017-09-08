@@ -327,7 +327,7 @@ ReactDOM.render(
 ---
 class: blue center middle
 
-# Step 2: GraphQL Query
+# Step 2a: GraphQL
 
 ---
 class: has-code
@@ -833,9 +833,15 @@ type User {
 ```
 
 ---
+class: blue center middle
+
+# Step 2b: Querying
+
+
+---
 class: has-code
 
-In the browser we need a boiler-plate fetch:
+We can run a GraphQL query in the browser command line using `window.fetch()`:
 
 ```js
 window.fetch("/graphql", {
@@ -858,53 +864,66 @@ window.fetch("/graphql", {
 ```
 --
 ```js
-}).then(response => response.json())
+})
+.then(response => response.json())
+.then(json => console.log(json))
 ```
 
 ---
 class: has-code
 
-.context[
-In the browser we need a boiler-plate fetch:
+The only things that change are the `query` and `variables`, so lets define a function to perform the boilerplate for us:
 
 ```js
-window.fetch("/graphql", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"},
-  body: JSON.stringify({
-    query: "query { currentUser { id name website } }",
-    variables: {}})
-}).then(response => response.json())
+*function executeGraphQLQuery(query, variables = {}) {
+  return window.fetch("/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+*     query: query,
+*     variables: variables
+    })
+  }).then(response => response.json());
+}
 ```
-]
-
---
-
-So we should made a React HOC with this API:
-
---
-
-```js
-const ComponentWithData =
-  withGraphQLResult(
-    query,
-    { variables } = {} // < optional options
-  )(Component)
-```
-
---
-
-.slidesLocation[
-#### `withGraphQLResult` source is in step 2 of the example repo [is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
-]
 
 ---
 class: has-code
-.slidesLocation[
-#### `withGraphQLResult` source is in step 2 of the example repo [is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
-]
+
+The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+
+--
+
+```js
+const withGraphQLResult = (query, { variables } = {}) => Component =>
+  class extends React.Component {
+    state = { loading: true };
+    componentDidMount() { this.fetch(); }
+    async fetch() {
+      try {
+        const json = await executeGraphQLQuery(query, variables);
+        this.setState({ loading: false, error: null, data: json.data });
+      } catch (e) {
+        this.setState({ loading: false, error: e });
+      }
+    }
+    render() {
+      return <Component
+        loading={this.state.loading}
+        data={this.state.data}
+        error={this.state.error}
+      />;
+    }
+  };
+}
+```
+
+
+---
+class: has-code
 
 Then every component
 
@@ -918,45 +937,16 @@ const Header = ({ data: { currentUser: { name } } }) =>
 can easily fetch data from GraphQL:
 
 ```js
-module.exports =
-  withGraphQLResult(`{ currentUser { name } }`)(Header)
+export default withGraphQLResult(`{ currentUser { name } }`)(Header)
 ```
 
----
-class: noop
-
-
-Pros
-
-.slidesLocation[
-#### `withGraphQLResult` source is in step 2 of the example repo [is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
-]
 --
 
-- Every component is independent
---
-
-- Required data co-located with the component
---
-
-- Easy to add data for a component
---
-
-
-Cons
+👍 Co-locating the data requirements with the component makes maintenance easier.
 
 --
 
-
-- Multiple requests to server
---
-
-- Extremely inefficient
-
---
-
-How can we solve this?
-
+👎 But a network fetch for every component displayed is hugely inefficient!
 
 ---
 class: blue center middle
