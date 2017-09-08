@@ -438,7 +438,7 @@ class: has-code
 ## Anatomy of a GraphQL Query
 
 ```graphql
-*query NameAndWebsiteQuery($id: ID!) {
+*query NameAndWebsiteQuery($id: Int!) {
 * user(id: $id) {
     name
     website
@@ -464,7 +464,7 @@ class: has-code
 Recap
 
 ```graphql
-query NameAndWebsiteQuery($id: ID!) {
+query NameAndWebsiteQuery($id: Int!) {
   user(id: $id) {
     name
     website
@@ -475,7 +475,7 @@ query NameAndWebsiteQuery($id: ID!) {
 ```graphql
 query                   # Operation type
 NameAndWebsiteQuery     # Operation name, for debugging
-($id: ID!)              # Variables and their types
+($id: Int!)              # Variables and their types
 {                       # Selection set
   user(id: $id)         # Field with arguments, variable reference
   {                     # Nested selection set
@@ -602,6 +602,7 @@ It defines the fields available at the root level.
 ```graphql
 type Query {
 ⁣
+⁣
 }
 ```
 ---
@@ -622,6 +623,7 @@ It defines the fields available at the root level.
 ```graphql
 type Query {
   currentUser: ...
+  user(id: Int!): ...
 }
 ```
 
@@ -642,6 +644,7 @@ schema {
 ```graphql
 type Query {
   currentUser: ...
+  user(id: Int!): ...
 }
 ```
 
@@ -664,6 +667,7 @@ schema {
 ```graphql
 type Query {
 * currentUser: User
+* user(id: Int!): User
 }
 ```
 GraphQL is strongly-typed, so we must specify the type(s) each field can return.
@@ -681,6 +685,7 @@ schema {
 ```graphql
 type Query {
   currentUser: User
+  user(id: Int!): User
 }
 ```
 ]
@@ -708,6 +713,7 @@ schema {
 ```graphql
 type Query {
   currentUser: User
+  user(id: Int!): User
 }
 ```
 ]
@@ -734,6 +740,7 @@ schema {
 ```graphql
 type Query {
   currentUser: User
+  user(id: Int!): User
 }
 ```
 ]
@@ -761,6 +768,7 @@ schema {
 ```graphql
 type Query {
   currentUser: User
+  user(id: Int!): User
 }
 ```
 ]
@@ -786,6 +794,7 @@ schema {
 ```graphql
 type Query {
   currentUser: User
+  user(id: Int!): User
 }
 ```
 ```graphql
@@ -812,6 +821,7 @@ schema {
 ```graphql
 type Query {
   currentUser: User
+  user(id: Int!): User
 }
 ```
 ```graphql
@@ -1327,7 +1337,7 @@ re-render.
 
 --
 
-Relay uses the global object identifier specification (node ID) as the cache key.
+Relay uses the global object identifier specification (node Int) as the cache key.
 
 --
 
