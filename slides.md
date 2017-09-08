@@ -1598,7 +1598,7 @@ re-render.
 
 --
 
-Relay uses the global object identifier specification (node Int) as the cache key.
+Relay uses the global object identifier specification (`GraphQLID`) as the cache key.
 
 --
 
@@ -1617,7 +1617,7 @@ Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.co
 Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
 ]
 
-# Conclusion
+# Recap
 
 ---
 .slidesLocation[
@@ -1630,14 +1630,11 @@ Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.co
 Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
 ]
 
-### RECAP
-
---
 
 - Anatomy of GraphQL queries, mutations & fragments
 --
 
-- Fragments make changes local, easy and DRY
+- Use fragments for maintainable DRY data specs
 --
 
 - GraphQL terminology such as **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**
