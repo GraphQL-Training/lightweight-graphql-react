@@ -1652,5 +1652,5 @@ Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTrai
   - `variables` expressing inputs to fields (optional)
 --
 
-- Tooling (e.g. Apollo & Relay) does a lot of work for us!
+- Tooling (e.g. Apollo & Relay) does a lot of work for us
 
