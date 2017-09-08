@@ -1567,36 +1567,52 @@ combination of `__typename` and `id` or similar).
 
 ---
 class: blue center middle
+.slidesLocation[
+
+.floatLeft[
+@Benjie
+]
+
+Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
+Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
+]
 
 # Conclusion
 
 ---
 .slidesLocation[
-Twitter: @Benjie  
+
+.floatLeft[
+@Benjie
+]
+
 Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
 Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
 ]
 
-We've covered:
+### RECAP
 
 --
 
-- Brief overview of a simple GraphQL Schema
+- Anatomy of GraphQL queries, mutations & fragments
 --
 
-- GraphQL queries and mutations with `window.fetch()`
+- Fragments make changes local, easy and DRY
+--
+
+- GraphQL terminology such as **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**
+--
+
+- Overview of a simple GraphQL Schema
+--
+
+- Performing queries and mutations with `window.fetch()`
 --
 
   - `query` string expressing fields to request
 --
 
   - `variables` expressing inputs to fields (optional)
---
-
-  - Mutations are very similar to queries
---
-
-- Fragments keep data specs DRY
 --
 
 - Tooling (e.g. Apollo & Relay) does a lot of work for us

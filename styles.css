@@ -82,7 +82,12 @@
   position: absolute;
   bottom: 0;
   right: 30px;
+  left: 30px;
   text-align: right;
+}
+.slidesLocation .floatLeft {
+  float:left;
+  text-align: left;
 }
 
 .slidesLocation p {
@@ -233,7 +238,7 @@ pre + pre {
 .blue h6 {
   color: white
 }
-.blue p, .blue code {
+.blue p, .blue code, .blue p a {
   color: #a4f0FF;
 }
 
