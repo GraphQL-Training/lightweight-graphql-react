@@ -6,7 +6,7 @@ class: title-page, blue
 
 ## Lightweight GraphQL
 
-### Benjie Gillam
+### Benjie Gillam (@Benjie)
 
 GraphQL Trainer  
 [PostGraphQL](https://github.com/postgraphql/postgraphql) OSS maintainer
@@ -65,7 +65,7 @@ deliberately simplified to ease understanding. GraphQL tooling does a lot for
 you and you should embrace it in any GraphQL projects you work on; however
 trying to master the tooling at the same time as the new query language can
 cause headaches, stress, feelings of being overwhelmed and in some extreme
-cases desk inversion.
+cases desk inversion. Terms and conditions apply; see in-store for details.
 Nullam ac lectus at neque convallis tempus. Nam augue
 risus, hendrerit vel ligula sed, sagittis pretium felis. Aenean vitae ipsum nec
 nisl faucibus venenatis. Sed sed blandit diam. Quisque et nunc vel orci
@@ -327,7 +327,7 @@ ReactDOM.render(
 ---
 class: blue center middle
 
-# Step 2: GraphQL Client
+# Step 2: GraphQL Query
 
 ---
 class: has-code
@@ -363,13 +363,43 @@ We request:
 ```
 ]
 
---
+---
+class: has-code
 
-.clearfix[
-]
+## Anatomy of a GraphQL Query
 
-.rightDiv[
-or
+```graphql
+{
+  currentUser {
+    name
+    website
+  }
+}
+```
+
+The above query has a few simple (nested) fields; this structure is called a **selection set** and tells GraphQL what we want returned.
+
+---
+class: has-code
+
+## Anatomy of a GraphQL Query
+
+```graphql
+*query {
+  currentUser {
+    name
+    website
+  }
+}
+```
+
+We can also specify the **operation type** `query`; it's optional for queries but required for mutations/subscriptions.
+
+---
+class: has-code
+
+## Anatomy of a GraphQL Query
+
 ```graphql
 *query NameAndWebsiteQuery {
   currentUser {
@@ -378,9 +408,86 @@ or
   }
 }
 ```
-]
+
+The **operation name** (`NameAndWebsiteQuery`) is an optional arbitrary name for the query useful for debugging.
 
 ???
+ (It should not change the result of the query.)
+
+---
+class: has-code
+
+## Anatomy of a GraphQL Query
+
+```graphql
+query NameAndWebsiteQuery {
+* user(id: 1) {
+    name
+    website
+  }
+}
+```
+
+Fields in GraphQL can also accept **arguments** which influence what the field does.
+
+Arguments can be required or optional.
+
+---
+class: has-code
+
+## Anatomy of a GraphQL Query
+
+```graphql
+*query NameAndWebsiteQuery($id: ID!) {
+* user(id: $id) {
+    name
+    website
+  }
+}
+```
+
+**Variables** (if any) are specified after the query name, and are referenced in
+the field arguments.
+
+
+???
+
+Because GraphQL is strongly typed, the type of the variable must be specified.
+
+Similar to prepared statements in SQL.
+
+---
+class: has-code
+
+## Anatomy of a GraphQL Query
+
+Recap
+
+```graphql
+query NameAndWebsiteQuery($id: ID!) {
+  user(id: $id) {
+    name
+    website
+  }
+}
+```
+
+```graphql
+query                   # Operation type
+NameAndWebsiteQuery     # Operation name, for debugging
+($id: ID!)              # Variables and their types
+{                       # Selection set
+  user(id: $id)         # Field with arguments, variable reference
+  {                     # Nested selection set
+    name                # Field
+    website
+  }
+}
+```
+
+???
+GraphQL also supports variables so that you can inject values into the query in a similar way to prepared queries in SQL.
+
 But how do we know which fields are available?
 
 ---
