@@ -488,7 +488,13 @@ NameAndWebsiteQuery     # Operation name, for debugging
 ???
 GraphQL also supports variables so that you can inject values into the query in a similar way to prepared queries in SQL.
 
-But how do we know which fields are available?
+---
+
+But how do we know which operations are supported, or what fields we can query within those?
+
+--
+
+These questions and more are answered by the GraphQL schema, which fully describes the shape of the GraphQL API.
 
 ---
 class: has-code
@@ -496,7 +502,7 @@ class: has-code
 ## GraphQL Schema
 --
 
-`schema` determines available operation types.
+The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -512,7 +518,7 @@ class: has-code
 
 ## GraphQL Schema
 
-`schema` determines available operation types.
+The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -527,7 +533,7 @@ class: has-code
 
 ## GraphQL Schema
 
-`schema` determines available operation types.
+The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -542,7 +548,7 @@ class: has-code
 
 ## GraphQL Schema
 
-`schema` determines available operation types.
+The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -552,20 +558,32 @@ schema {
   subscription: ...
 }
 ```
+
 ---
 class: has-code
 
 ## GraphQL Schema
 
-`schema` determines available operation types.
+.context[
+The `schema` entry exposes available operations:
 
+
+```graphql
+schema {
+  query: ...
+  mutation: ...
+  subscription: ...
+}
+```
+]
+
+Our read-only API only has the `query` operation; the fields of which are exposed on the `Query` type:
 
 ```graphql
 schema {
 * query: Query
 }
 ```
-
 ---
 class: has-code
 

@@ -28,7 +28,7 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-	overflow: auto;
+	overflow: hidden;
 }
 
 pre[class*="language-"]::-moz-selection {
