@@ -24,9 +24,12 @@ GraphQL Trainer
 
 Hello everyone I'm Benjie Gillam.
 
-I'm a GraphQL trainer and also the maintainer of the open source project
-PostGraphQL which allows you to create a GraphQL database from your Postgres
-database schema in a instant - you should check it out!
+I'm a freelance software developer, working on Postgres, Node.js, GraphQL and
+React projects.
+
+I'm also a GraphQL trainer and the maintainer of the open source PostGraphQL
+project which **allows you to create a full GraphQL API from your Postgres
+database schema in a instant - you should check it out!**
 
 But I'm not going to be talking about that today; instead we're going to be
 talking about how to make a lightweight GraphQL app.
