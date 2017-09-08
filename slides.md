@@ -22,12 +22,14 @@ GraphQL Trainer
 
 ???
 
-Hello everyone I'm Benjie Gillam and you can find me on GitHub or Twitter as
-@Benjie. I'm a GraphQL trainer and I'm also the maintainer of the open source
-project PostGraphQL which allows you to create a GraphQL database from your
-Postgres database schema in a instant - you should check it out! But I'm not
-going to be talking about that today; instead we're going to be talking about
-how to make a lightweight GraphQL app.
+Hello everyone I'm Benjie Gillam.
+
+I'm a GraphQL trainer and also the maintainer of the open source project
+PostGraphQL which allows you to create a GraphQL database from your Postgres
+database schema in a instant - you should check it out!
+
+But I'm not going to be talking about that today; instead we're going to be
+talking about how to make a lightweight GraphQL app.
 
 ---
 
@@ -38,7 +40,9 @@ how to make a lightweight GraphQL app.
 So what do I mean by a lightweight GraphQL app? Well we won't be using using
 any of the GraphQL tooling such as Apollo or Relay. We won't be using
 JavaScript tooling such as webpack or browserify. We will not be delving into the
-server side. We will just be using vanilla JS, window.fetch() and of course react!
+server side.
+
+We will just be using vanilla JS, window.fetch() and of course react!
 
 
 --
@@ -67,7 +71,7 @@ class: black center
 
 ???
 
-Before we get started a little disclaimer
+Before we get started a little disclaimer:
 
 
 
@@ -78,7 +82,7 @@ This talk does not demonstrate best practices.
 
 ???
 
-What I will be showing you tonight does not demonstrate best practices.
+What I will be showing you does not demonstrate best practices!
 
 
 --
@@ -102,11 +106,12 @@ finibus. Donec sed nisl eget risus dictum gravida. Sed sit amet nulla sapien.
 
 ???
 
-We are
-deliberately not using the GraphQL tooling because we want to understand what
-is going on under the covers; however you should recognise that GraphQL tooling
-is something that you should definitely use when it comes to making a real
-GraphQL project.
+We are deliberately not using the GraphQL tooling because we want to understand
+what is going on under the hood.
+
+It's important to recognise that you SHOULD use GraphQL tooling in your
+production projects as it will save you a lot of work and hopefully reduce
+the number of errors.
 
 So without further and do let's get started
 
@@ -119,10 +124,12 @@ class: has-code center
 
 ???
 
-Here is the specification that has been given to our team. It's a fairly simple
-settings page with a header display in the website name and the name of the
-user that currently locked them, and a form allowing the user to edit their
-name and website.
+Here is the specification that has been given to our team.
+
+It's a fairly simple settings page with a header displaying the website name
+and the name of the user that is currently logged in,
+
+and a form allowing the user to edit their name and website.
 
 
 ---
@@ -132,7 +139,7 @@ class: blue center middle
 
 ???
 
-So the first thing we going to be doing is building a mock-up.
+The first thing we going to do is building a mock-up.
 
 
 ---
@@ -160,12 +167,18 @@ Basic HTML setup:
 
 ???
 
-Here is the basic HTML file that we going to create. First we're using the
-bootstrap CSS so we don't have to worry about stylesheets. Then we are pulling
-in react and react DOM. And since JSX is not built into the JavaScript language
-will also be pulling in Babel so that the browser can understand this syntax.
-And that's the extent of the tooling we'll be using. Finally we load our main
-javascript file.
+Here is the basic HTML file that we are going to use.
+
+First we're using the bootstrap CSS so we don't have to worry about stylesheets.
+
+Then we are pulling in react and react DOM.
+
+And since JSX is not built into the JavaScript language will also be pulling in
+Babel so that the browser can understand this syntax.
+
+And that's the extent of the tooling we'll be using.
+
+Finally we load our main javascript file.
 
 ---
 class: has-code
@@ -193,7 +206,10 @@ const MOCK_DATA = {
 
 ???
 
-The backend engineer has provided us with the following mock data. As you can see it's simply a currentUser object which includes name and website fields.
+The backend engineer has provided us with the following mock data.
+
+As you can see it's simply a currentUser object which includes name and website
+fields.
 
 
 ---
@@ -215,7 +231,7 @@ const MOCK_DATA = {
 ]
 
 ???
-Moving this to the side 
+Moving this to the side...
 
 --
 
@@ -352,8 +368,8 @@ const Layout = ({currentUser}) =>
 
 ???
 
-Pulling these together we have the layout component which renders both the
-header and settings page components passing down the current user.
+Pulling these together we have the Layout component which renders both the
+Header and SettingsPage components passing down the currentUser.
 
 ---
 class: has-code
@@ -419,8 +435,8 @@ ReactDOM.render(
 
 ???
 
-And finally to render this to the page we use react DOM to render the layout
-using our mock data into our react element.
+And finally we use ReactDOM.render to render the Layout to the webpage, passing
+in our MOCK_DATA.
 
 I will not be expanding any further on these react components as that is beyond
 the scope of this talk.
@@ -432,10 +448,14 @@ class: blue center middle
 
 ???
 
-The backend engineer has got in touch and she has informed us that a basic
-read-only GraphQL API is now available to us which we should use instead of the
-mock data we were given before. But before we can query this data we need to
-understand a little bit about GraphQL.
+The backend engineer has got in touch and she has informed us that
+
+**a basic read-only GraphQL API** is now available to us which
+
+we should **use instead of the mock data** we were given before.
+
+But before we can query this data we need to understand a little bit about
+GraphQL.
 
 
 ---
@@ -446,10 +466,14 @@ GraphQL returns data in shape you request.
 ???
 
 The most fundamental thing to know about GraphQL is that it returns data in the
-shape that you request. For example to get the data that we had previously in
-our mock we would request the following. As you can see the fields and
-structure in our query on the right correspond with the fields and structure on
-the data returned on the left.
+shape that you request.
+
+For example to get the data that we had previously in our mock...
+
+We would request the following...
+
+As you can see the fields and structure in our query on the right correspond
+with the fields and structure on the data returned on the left.
 
 
 --
@@ -495,13 +519,12 @@ class: has-code
 }
 ```
 
-The above query has a few simple (nested) fields; this structure is called a **selection set** and tells GraphQL what we want returned.
+The query from the previous slide (above) has a few (nested) fields; this structure is called a **selection set** and tells GraphQL exactly what data we want.
+
 
 ???
 
-Let's have a look at the anatomy of a GraphQL query.
-
-So here is the graph your query from the previous slides. It has a few simple (nested) fields...
+← ...
 
 ??
 
@@ -523,11 +546,7 @@ class: has-code
 }
 ```
 
-We can specify the **operation type** `query`; it's optional for queries but required for mutations/subscriptions.
-
-???
-
-To read data we use a query. To change data we would use a mutation. And to be notified when an event occurs we would use a subscription.
+We can specify the **operation type** `query`; it's optional for queries but required for all other operation types.
 
 
 ---
@@ -547,13 +566,18 @@ class: has-code
 The **operation name** (`NameAndWebsiteQuery`) is an optional arbitrary name for the query useful for debugging.
 
 ???
+
+← ...
+
+??
+
  (It should not change the result of the query.)
 
 ??
 
 
 Now imagine instead of wanting to view the current users name and website we
-wanted to see someone else's. We could do this by adding a field "user"
+wanted to see someone else's.
 
 ---
 class: has-code
@@ -569,20 +593,19 @@ query NameAndWebsiteQuery {
 }
 ```
 
-Fields in GraphQL can also accept **arguments** which influence what the field does.
+We can give a field additional data by passing it **arguments**.
 
 Arguments can be required or optional.
 
 ???
 
-Now imagine instead of wanting to view the current users name and website we
-wanted to see someone else's. We could do this by adding a field "user" **but we
-need to specify which user we want to look at**. We can do this by passing
-arguments to the user field (or whichever field the backend engineer has given
-us for this purpose). Arguments in GraphQL might also do other things, such as
-in a list of objects they might limit the number of results returned or filter
-them in some way, and in a mutation they would describe the changes to make to
-the data.
+**We need a way of specifying which user we want to look at**. We can do this
+by passing arguments to the user field (or whichever field the backend engineer
+has given us for this purpose).
+
+Arguments can be required or optional, and they serve many purposes including
+limiting and filtering lists of data, performing pagination, and as inputs to
+mutations.
 
 The issue with this query though is that we'd have to issue a different
 (dynamic) query for each individual user profile we wished to see.
@@ -602,19 +625,28 @@ class: has-code
 }
 ```
 
+???
+The issue with this query though is that we'd have to issue a different
+(dynamic) query for each individual user profile we wished to see.
+
+**Instead** we can use GraphQL variables, similar to parameters in SQL queries, to extract these non-static arguments from the query string.
+
+--
+
 **Variables** (if any) are specified after the query name, and are referenced in
 the field arguments.
 
 
 ???
-The issue with this query though is that we'd have to issue a different
-(dynamic) query for each individual user profile we wished to see.
 
-**Instead** we can use GraphQL variables, similar to parameters in SQL queries, to extract these arguments into a separate concern.
+??
+
+← ...
+
+??
 
 Because GraphQL is strongly typed, the type of the variable must be specified.
 
-Similar to prepared statements in SQL.
 
 ---
 class: has-code
@@ -648,11 +680,11 @@ NameAndWebsiteQuery     # Operation name, for debugging
 ???
 
 So looking back at the full GraphQL query, we have:
-- The operation type: query
-- The operation name: NameAndWebsiteQuery
-- The variables: $id of type non-null ID
-- The selection set querying the user field on root passing the $id variable in as an argument
-- The selection set of fields to request from the user object
+- The operation **type**: query
+- The operation **name**: NameAndWebsiteQuery
+- The **variables**: $id of type non-null ID
+- The **selection set** querying the user field on root passing the $id variable in as an argument
+- The **nested selection set** of fields to request from the user object
 
 
 ---
@@ -661,7 +693,7 @@ But how do we know which operations are supported, or what fields we can query w
 
 --
 
-These questions and more are answered by the GraphQL schema, which fully describes the shape of the GraphQL API.
+These questions and more are answered by the GraphQL schema.
 
 ---
 class: has-code
@@ -682,7 +714,7 @@ schema {
 
 ???
 
-The schema entry exposes available operations.
+The schema entry exposes available **operation types**
 
 These include:
 
@@ -778,6 +810,12 @@ schema {
 * query: Query
 }
 ```
+
+???
+
+← ...
+
+??
 ---
 class: has-code
 
@@ -828,7 +866,8 @@ type Query {
 ???
 
 In our API we only have two root level fields currently: "currentUser" which
-accepts no arguments, and "user" which accepts a user ID to look up.
+accepts no arguments, and "user" which accepts the integer ID of the user to
+look up.
 
 
 ---
@@ -850,8 +889,6 @@ type Query {
   user(id: Int!): ...
 }
 ```
-
---
 
 GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ---
@@ -1603,7 +1640,7 @@ Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTrai
 - GraphQL terminology such as **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**
 --
 
-- Overview of a simple GraphQL Schema
+- Overview of a simple read-only GraphQL Schema
 --
 
 - Performing queries and mutations with `window.fetch()`
@@ -1615,5 +1652,5 @@ Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTrai
   - `variables` expressing inputs to fields (optional)
 --
 
-- Tooling (e.g. Apollo & Relay) does a lot of work for us
+- Tooling (e.g. Apollo & Relay) does a lot of work for us!
 
