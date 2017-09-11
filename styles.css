@@ -361,3 +361,37 @@ code .hilight * {
  .smallprint {
    font-size: 0.6em;
  }
+
+
+/* ----------------------------------------
+ * Prism syntax highlighting
+ */
+
+.html .token.doctype { color: #525865 }
+.html .tag .token.punctuation { color: #DC616A }
+.html .token.tag { color: #DC616A }
+.html .token.attr-name { color: #CB8F5B }
+.html .token.attr-value { color: #8DBB6E }
+
+.language-jsx .token.keyword { color: #BE6DD8 }
+.language-jsx .token.string { color: #8DBB6E }
+.language-jsx .token.operator { color: #BE6DD8 }
+.language-jsx .token.tag { color: #DC616A }
+.language-jsx .tag .token.punctuation { color: #DC616A }
+.language-jsx .tag .script .token.punctuation { color: white }
+.language-jsx .token.attr-name { color: #CB8F5B }
+.language-jsx .token.attr-value { color: #8DBB6E }
+.language-jsx .token.function { color: #56A6ED }
+.language-jsx .token.class-name { color: #56A6ED }
+.language-jsx .token.comment { color: #525865 }
+.language-jsx .token.interpolation-punctuation { color: #B6463D }
+
+
+.language-json .token.property { color: #8DBB6E }
+
+
+.language-graphql .remark-code-line { color: #8DBB6E }
+.language-graphql .remark-code-line { color: #56A6ED }
+.language-graphql .remark-code-line { color: #BE6DD8 }
+.language-graphql .token.keyword { color: #BE6DD8 }
+.language-graphql .token.attr-name { color: #56A6ED }
