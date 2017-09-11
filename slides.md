@@ -1299,14 +1299,14 @@ export default withGraphQLResult(`{ currentUser { name } }`)(Header)
 ---
 class: has-code
 
-### Which is great because:
+## Which is great because:
 
 
 #### 👍 Co-locating the data requirements with the component makes maintenance easier.
 
 --
 
-### But not so great because:
+## But not so great because:
 
 #### 👎 A network fetch for every component displayed is hugely inefficient!
 
@@ -1322,15 +1322,15 @@ class: bg-white
 
 ## Fragments
 
-#### Shared pieces of query logic that can be composed.
+### Shared pieces of query logic that can be composed.
 
 --
 
-#### Each component can have fragments; root component combines the relevant fragments together to form the GraphQL query.
+### Each component can have fragments; root component combines the relevant fragments together to form the GraphQL query.
 
 --
 
-#### GraphQL will request the minimum information required to satisfy all specified fragments.
+### GraphQL will request the minimum information required to satisfy all specified fragments.
 
 
 ???
@@ -1497,7 +1497,7 @@ class: invert center middle
 ---
 class:  chapter-title center middle
 
-## Step 4: Another attribute
+# Step 4: Another attribute
 
 ### `avatarUrl` added to GraphQL Schema
 
@@ -1541,7 +1541,7 @@ class: center middle bg-white
 ---
 class:  chapter-title center middle
 
-## Step 5: Mutations
+# Step 5: Mutations
 
 ---
 class: has-code
