@@ -1,23 +1,15 @@
-class: title-page, blue
+class: title-page bg-blue-home
 
-<div>
-<img src='images/react-logo.png' title='React logo' class='react-logo'>
-</div>
-
-## Lightweight GraphQL
+# Lightweight GraphQL
 
 ### Benjie Gillam (@Benjie)
 
 GraphQL Trainer  
 [PostGraphQL](https://github.com/postgraphql/postgraphql) OSS maintainer
 
-<div class='postgraphql-logo-container'>
-<img src='images/postgraphql-logo.png' title='PostGraphQL logo' class='postgraphql-logo'>
-</div>
-
 .slidesLocation[
 
-[graphql-training.com/lightweight-graphql-react](https://www.graphql-training.com/lightweight-graphql-react)
+Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
 ]
 
 ???
@@ -36,7 +28,15 @@ talking about how to make a lightweight GraphQL app.
 
 ---
 
-## Lightweight GraphQL app
+class: chapter-title center middle
+
+# Lightweight?
+
+
+---
+class: bg-white
+
+## What's not discussed:
 
 ???
 
@@ -46,7 +46,6 @@ JavaScript tooling such as webpack or browserify. We will not be delving into th
 server side.
 
 We will just be using vanilla JS, window.fetch() and of course react!
-
 
 --
 
@@ -59,6 +58,13 @@ We will just be using vanilla JS, window.fetch() and of course react!
 - ❎ Delving into the server-side
 --
 
+
+# 
+
+
+## What is discussed:
+--
+
 - ✅ Vanilla JS
 --
 
@@ -68,9 +74,14 @@ We will just be using vanilla JS, window.fetch() and of course react!
 - ✅ React
 
 ---
-class: black center
+class: invert center
 
-## DISCLAIMER
+
+.fire[
+
+# DISCLAIMER
+
+]
 
 ???
 
@@ -81,7 +92,7 @@ Before we get started a little disclaimer:
 
 --
 
-This talk does not demonstrate best practices.
+## This talk does not demonstrate best practices!
 
 ???
 
@@ -119,9 +130,9 @@ the number of errors.
 So without further and do let's get started
 
 ---
-class: has-code center
+class: bg-blue center
 
-## The spec
+## What the designers want:
 
 ![Spec](images/spec.png)
 
@@ -136,7 +147,7 @@ and a form allowing the user to edit their name and website.
 
 
 ---
-class: blue center middle
+class: chapter-title center middle
 
 # Step 1: Mock-up
 
@@ -148,7 +159,7 @@ The first thing we going to do is building a mock-up.
 ---
 class: has-code
 
-Basic HTML setup:
+### Basic HTML setup:
 
 ```html
 <!DOCTYPE html>
@@ -196,7 +207,7 @@ So moving the spec image to the side...
 
 
 --
-Backend engineers have provided mock data:
+#### Backend engineers have provided mock data:
 
 ```js
 const MOCK_DATA = {
@@ -299,7 +310,7 @@ Moving this to the side also...
 class SettingsPage extends React.Component {
   ...
   render() {
-    return <form onSubmit={this.onSumbit}>
+    return <form onSubmit={this.onSubmit}>
       <h2>Settings</h2>
       <label>Name <input ... /></label>
       <label>Website <input ... /></label>
@@ -445,7 +456,7 @@ I will not be expanding any further on these react components as that is beyond
 the scope of this talk.
 
 ---
-class: blue center middle
+class:  chapter-title center middle
 
 # Step 2a: GraphQL
 
@@ -464,7 +475,7 @@ GraphQL.
 ---
 class: has-code
 
-GraphQL returns data in shape you request.
+### GraphQL returns data in shape you request.
 
 ???
 
@@ -482,7 +493,7 @@ with the fields and structure on the data returned on the left.
 --
 
 .leftSplit[
-To get:
+#### To get:
 
 ```json
 {
@@ -496,7 +507,7 @@ To get:
 
 --
 .rightSplit[
-We request:
+#### We request:
 
 ```graphql
 {
@@ -511,7 +522,7 @@ We request:
 ---
 class: has-code
 
-## Anatomy of a GraphQL Query
+### Anatomy of a GraphQL Query
 
 ```graphql
 {
@@ -538,7 +549,7 @@ those back in.
 ---
 class: has-code
 
-## Anatomy of a GraphQL Query
+### Anatomy of a GraphQL Query
 
 ```graphql
 *query {
@@ -555,7 +566,7 @@ We can specify the **operation type** `query`; it's optional for queries but req
 ---
 class: has-code
 
-## Anatomy of a GraphQL Query
+### Anatomy of a GraphQL Query
 
 ```graphql
 *query NameAndWebsiteQuery {
@@ -585,7 +596,7 @@ wanted to see someone else's.
 ---
 class: has-code
 
-## Anatomy of a GraphQL Query
+### Anatomy of a GraphQL Query
 
 ```graphql
 query NameAndWebsiteQuery {
@@ -617,7 +628,7 @@ The issue with this query though is that we'd have to issue a different
 ---
 class: has-code
 
-## Anatomy of a GraphQL Query
+### Anatomy of a GraphQL Query
 
 ```graphql
 *query NameAndWebsiteQuery($id: Int!) {
@@ -654,9 +665,9 @@ Because GraphQL is strongly typed, the type of the variable must be specified.
 ---
 class: has-code
 
-## Anatomy of a GraphQL Query
+### Anatomy of a GraphQL Query
 
-Recap
+#### Recap:
 
 ```graphql
 query NameAndWebsiteQuery($id: Int!) {
@@ -692,11 +703,24 @@ So looking back at the full GraphQL query, we have:
 
 ---
 
-But how do we know which operations are supported, or what fields we can query within those?
+class: bg-blue center middle
 
---
 
-These questions and more are answered by the GraphQL schema.
+# Question!
+
+### How do we know which operations are supported, or what fields we can query within those?
+
+
+---
+
+class: bg-blue center middle
+
+
+# Answer!
+
+### These questions and more are answered by the GraphQL schema.
+
+
 
 ---
 class: has-code
@@ -1114,7 +1138,7 @@ queries in the central pane to get very quick feedback - it's a real boon for
 anyone exploring GraphQL APIs and makes developer onboarding a lot faster!
 
 ---
-class: blue center middle
+class:  chapter-title center middle
 
 # Step 2b: Querying
 
@@ -1122,7 +1146,7 @@ class: blue center middle
 ---
 class: has-code
 
-We can run a GraphQL query in the browser command line using `window.fetch()`:
+### We can run a GraphQL query in the browser command line using `window.fetch()`:
 
 ```js
 window.fetch("/graphql", {
@@ -1153,7 +1177,7 @@ window.fetch("/graphql", {
 ---
 class: has-code
 
-The only things that change are the `query` and `variables`, so lets define a function to perform the boilerplate for us:
+#### The only things that change are the `query` and `variables`, so lets define a function to perform the boilerplate for us:
 
 ```js
 *function executeGraphQLQuery(query, variables = {}) {
@@ -1174,7 +1198,7 @@ The only things that change are the `query` and `variables`, so lets define a fu
 ---
 class: has-code
 
-The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+### The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
 
 
 ```js
@@ -1184,7 +1208,7 @@ const withGraphQLResult = (query, { variables } = {}) => ...
 ---
 class: has-code
 
-The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+### The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
 
 
 ```js
@@ -1195,7 +1219,7 @@ const withGraphQLResult = (query, { variables } = {}) => Component =>
 ---
 class: has-code
 
-The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+### The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
 
 
 ```js
@@ -1206,7 +1230,7 @@ const withGraphQLResult = (query, { variables } = {}) => Component =>
 ---
 class: has-code
 
-The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+### The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
 
 
 ```js
@@ -1226,7 +1250,7 @@ const withGraphQLResult = (query, { variables } = {}) => Component =>
 ---
 class: has-code
 
-The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+### The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
 
 
 ```js
@@ -1256,7 +1280,7 @@ const withGraphQLResult = (query, { variables } = {}) => Component =>
 ---
 class: has-code
 
-Then every component
+### Then every component...
 
 ```js
 const Header = ({ data: { currentUser: { name } } }) =>
@@ -1265,40 +1289,48 @@ const Header = ({ data: { currentUser: { name } } }) =>
 
 --
 
-can easily fetch data from GraphQL:
+### ... can easily fetch data from GraphQL:
 
 ```js
 export default withGraphQLResult(`{ currentUser { name } }`)(Header)
 ```
 
---
-
-👍 Co-locating the data requirements with the component makes maintenance easier.
-
---
-
-👎 But a network fetch for every component displayed is hugely inefficient!
 
 ---
-class: blue center middle
+class: has-code
+
+### Which is great because:
+
+
+#### 👍 Co-locating the data requirements with the component makes maintenance easier.
+
+--
+
+### But not so great because:
+
+#### 👎 A network fetch for every component displayed is hugely inefficient!
+
+---
+class:  chapter-title center middle
 
 # Step 3: Fragments
 
 ---
 
+class: bg-white
+
+
 ## Fragments
 
-Shared pieces of query logic that can be composed.
+#### Shared pieces of query logic that can be composed.
 
 --
 
-Each component can have fragments; root component combines the relevant
-fragments together to form the GraphQL query.
+#### Each component can have fragments; root component combines the relevant fragments together to form the GraphQL query.
 
 --
 
-GraphQL will request the minimum information required to satisfy all specified
-fragments.
+#### GraphQL will request the minimum information required to satisfy all specified fragments.
 
 
 ???
@@ -1455,19 +1487,18 @@ const Root = withGraphQLResult(`
 ```
 
 ---
-class: black center middle
+class: invert center middle
 
 
 
-⚠️ Simple string concatenation, as we do here, will not allow the same fragment
-twice - use a tool such as Apollo or Relay to solve this! ⚠️
+### ⚠️ Simple string concatenation, as we do here, will not allow the same fragment twice - use a tool such as Apollo or Relay to solve this! ⚠️
 
 ---
-class: blue center middle
+class:  chapter-title center middle
 
 ## Step 4: Another attribute
 
-`avatarUrl` added to GraphQL Schema
+### `avatarUrl` added to GraphQL Schema
 
 ---
 class: has-code
@@ -1500,14 +1531,14 @@ Header.HeaderUserFragment = `
 ```
 
 ---
-class: center middle
+class: center middle bg-white
 
 # That was it!
 
-Layout doesn't know or care it was added.
+### Layout doesn't know or care it was added.
 
 ---
-class: blue center middle
+class:  chapter-title center middle
 
 ## Step 5: Mutations
 
@@ -1639,68 +1670,71 @@ Queries and mutations use the same API - `query` and `variables`.
 
 ---
 
-Using the data from the payload we can then update the display.
+class: bg-white
+
+
+#### Using the data from the payload we can then update the display.
 
 --
 
-Tools like Apollo and Relay manage your store/cache for you and tell React to
-re-render.
+#### Tools like Apollo and Relay manage your store/cache for you and tell React to re-render.
 
 --
 
-Relay uses the global object identifier specification (`GraphQLID`) as the cache key.
+
+.codeColorInherit[
+#### Relay uses the global object identifier specification (`GraphQLID`) as the cache key.
+]
 
 --
 
-Apollo is more flexible, allowing you to specify `dataIdFromObject` (commonly a
-combination of `__typename` and `id` or similar).
+.codeColorInherit[
+#### Apollo is more flexible, allowing you to specify `dataIdFromObject` (commonly a combination of `__typename` and `id` or similar).
+]
 
 ---
-class: blue center middle
-.slidesLocation[
-
-.floatLeft[
-@Benjie
-]
-
-Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
-Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
-]
+class: center middle bg-blue
 
 # Recap
 
 ---
+
+class: bg-blue
+
 .slidesLocation[
 
-.floatLeft[
 @Benjie
-]
 
 Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
+
 Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
 ]
 
 
-- Anatomy of GraphQL queries, mutations & fragments
+👍 Anatomy of GraphQL queries, mutations & fragments
+
 --
 
-- Use fragments for maintainable DRY data specs
+👍 Use fragments for maintainable DRY data specs
+
 --
 
-- GraphQL terminology such as **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**
+👍 GraphQL terminology: **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**
+
 --
 
-- Overview of a simple read-only GraphQL Schema
+👍 Overview of a simple read-only GraphQL Schema
+
 --
 
-- Performing queries and mutations with `window.fetch()`
---
+
+.headeredList[
+👍 Performing queries and mutations with `window.fetch()`:
 
   - `query` string expressing fields to request
---
-
   - `variables` expressing inputs to fields (optional)
+]
+
 --
 
-- Tooling (e.g. Apollo & Relay) does a lot of work for us
-
+👍 Tooling (e.g. Apollo & Relay) does a lot of work for us
