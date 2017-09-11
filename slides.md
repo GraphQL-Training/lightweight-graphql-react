@@ -1250,7 +1250,6 @@ const withGraphQLResult = (query, { variables } = {}) => Component =>
       />;
     }
   };
-}
 ```
 
 
@@ -1605,7 +1604,7 @@ class: has-code
 const mutationQuery = `
   mutation UpdateCurrentUserMutation($userChanges: UserPatch!) {
     updateCurrentUser(input: { userPatch: $userChanges }) {
-      user { ...HeaderUserFragment ...SettingsPageUserFragment }
+      user { id name website }
     }
   }`;
 ```
