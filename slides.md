@@ -670,7 +670,7 @@ query NameAndWebsiteQuery($id: Int!) {
 ```graphql
 query                   # Operation type
 NameAndWebsiteQuery     # Operation name, for debugging
-($id: Int!)              # Variables and their types
+($id: Int!)             # Variables and their types
 {                       # Selection set
   user(id: $id)         # Field with arguments, variable reference
   {                     # Nested selection set
@@ -1176,7 +1176,58 @@ class: has-code
 
 The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
 
---
+
+```js
+const withGraphQLResult = (query, { variables } = {}) => ...
+```
+
+---
+class: has-code
+
+The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+
+
+```js
+const withGraphQLResult = (query, { variables } = {}) => Component =>
+  class extends React.Component {
+```
+
+---
+class: has-code
+
+The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+
+
+```js
+const withGraphQLResult = (query, { variables } = {}) => Component =>
+  class extends React.Component {
+    state = { loading: true };
+```
+---
+class: has-code
+
+The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+
+
+```js
+const withGraphQLResult = (query, { variables } = {}) => Component =>
+  class extends React.Component {
+    state = { loading: true };
+    componentDidMount() { this.fetch(); }
+    async fetch() {
+      try {
+        const json = await executeGraphQLQuery(query, variables);
+        this.setState({ loading: false, error: null, data: json.data });
+      } catch (e) {
+        this.setState({ loading: false, error: e });
+      }
+    }
+```
+---
+class: has-code
+
+The `executeGraphQLQuery` function can then be incorporated into a higher-order component:
+
 
 ```js
 const withGraphQLResult = (query, { variables } = {}) => Component =>
