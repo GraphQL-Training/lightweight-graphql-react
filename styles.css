@@ -1,4 +1,6 @@
-/* ----- Remark overrides ----- */
+/* ----------------------------------------
+ * Remark overrides
+ */
 
 .remark-slide-scaler {
   -moz-box-shadow: none;
@@ -12,13 +14,12 @@
 }
 
 .remark-slide-content {
-  padding: 4rem;
+  padding: 2rem;
 }
 
 .remark-slide-content.full-code {
   padding: 0
 }
-*/
 
 .full-code pre {
   margin: 0
@@ -51,8 +52,8 @@
 .remark-code-line-highlighted,
 .remark-code-span-highlighted {
   background-color: #363C48;
-  border-left: 5px solid white;
-  border-right: 5px solid white;
+  border-left: 5px solid #FFFF03;
+  border-right: 5px solid #FFFF03;
   margin: 0 -5px;
 }
 
@@ -62,28 +63,19 @@
 
 .slidesLocation {
   position: absolute;
-  bottom: 0;
-  right: 30px;
-  left: 30px;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
   text-align: right;
 }
 
-.slidesLocation .floatLeft {
+.slidesLocation {
   float:left;
   text-align: left;
 }
 
-.slidesLocation p {
-  font-size: 1.8rem;
-}
-
-.slidesLocation.onWhite p a {
-  color: black;
-  text-shadow: 1px 1px 2px white;
-}
-.has-code .slidesLocation p a {
-  color: white;
-  text-shadow: 1px 1px 2px black;
+.slidesLocation.slidesLocation p {
+  margin-bottom: 0rem;
 }
 
 .title-page .react-logo {
@@ -109,6 +101,9 @@
   margin-top: 30px;
 }
 
+.codeColorInherit .remark-inline-code {
+  color: inherit;
+}
 
 /* ----------------------------------------
  * Typography
@@ -116,6 +111,10 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+}
+
+html {
+  font-size: 22px;
 }
 
 .remark-slide-content h1,
@@ -126,6 +125,12 @@ body {
 .remark-slide-content h6 {
   line-height: 1.25;
   max-width: 30em;
+  font-weight: 800;
+}
+
+.remark-slide-content p,
+.remark-slide-content li {
+  font-weight: 600;
 }
 
 .remark-slide-content h1 {
@@ -162,6 +167,9 @@ body {
 }
 
 .remark-slide-content li {
+  margin-bottom: 0.5rem;
+}
+.remark-slide-content ul {
   margin-bottom: 1rem;
 }
 
@@ -169,12 +177,31 @@ ol ul,
 ol ol,
 ul ol,
 ul ul {
-  font-size: 1em;
+  font-size: 0.8em;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ul ul {
+  padding-left: 2rem;
+  list-style-type: disc;
+}
+
+.headeredList p {margin-bottom: 0.5rem }
+.headeredList > ul {padding-left: 2rem; list-style-type: disc;}
 
 /* ----------------------------------------
  *
  */
+
+img {
+  box-shadow: 0 0 20px 9px rgba(0, 0, 0, 0.18);
+}
 
 iframe {
   width: 100%;
@@ -193,36 +220,65 @@ pre + pre {
 
 /* ----- Template colors ----- */
 
-.invert { background: #121721; }
+.invert {
+  background: #101010;
+  background-image: url('images/light-graph-2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+}
+
 .invert * { color: white; }
+.invert * .remark-inline-code { color: #dda2ff; }
 
 .fire, .fire * { color: #ED2700; }
 
-.chapter-title { background-color: #ED2900; }
+.chapter-title {
+  color: white;
+  background-color: #ED2700;
+  background-image: url('images/fire-graph-2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .chapter-title * { color: white; }
+.chapter-title * .remark-inline-code { color: #DDD; }
 
-.bg-blue { background: #0c74d5; }
+.question p {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.bg-blue * { color: white }
+.bg-blue .remark-inline-code { color: #b9ebff; }
+.bg-blue {
+  background: #0c74d5;
+  background-image: url('images/light-graph-3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.bg-blue-home * {color: white;}
+.bg-blue-home {
+  color: white;
+  background: #0c74d5;
+  background-image:
+    url('images/light-graph-3.png'),
+    url('images/big-brain.png');
+  background-repeat: no-repeat;
+  background-size: cover, 10rem;
+  background-position: center center, top 10rem right 5rem;
+}
+
+.bg-white {
+  background-image: url('images/light-graph-4.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .bg-blue-gradient {
   background-image: linear-gradient(106deg, #0f0c40 0%, #222d5b 16%, #324f77 33%, #407294 50%, #4d98b2 66%, #59c0d0 83%, #64e9f0 100%);
-}
-
-.cover {
-  -webkit-background-size: cover !important;
-  -moz-background-size: cover !important;
-  background-size: cover !important;
-  background-position-x: center !important;
-  background-position-y: center !important;
-  background-repeat: no-repeat !important
-}
-
-.contain {
-  -webkit-background-size: contain !important;
-  -moz-background-size: contain !important;
-  background-size: contain !important;
-  background-position-x: center !important;
-  background-position-y: center !important;
-  background-repeat: no-repeat !important
 }
 
 .postgraphql-is {
@@ -242,8 +298,16 @@ pre + pre {
 
 /* ----- Code ----- */
 
-.has-code { background: #101010; padding: 2rem 2rem; }
-.has-code * { color: #EBEAEA }
+.has-code {
+  background: #101010;
+  padding: 2rem 2rem;
+  color: white;
+  background-image: url('images/light-graph-null.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+}
+.has-code * { color: white }
 
 .remark-code, .remark-inline-code { font-family: Monaco, "Lucida Console", monospace; }
 
@@ -296,42 +360,27 @@ code .hilight * {
 }
 
 .spaceAtTop {
-  margin-top: 60px;
+  margin-top: 2rem;
 }
 
 .leftSplit {
   width: 50%;
   float: left;
 }
+
 .rightSplit {
   width: 50%;
   float: left;
 }
 
-.rightDiv p {
-  margin-top: 10px;
-}
-.rightDiv {
-  width: 50%;
-  margin: 0 0 0 auto;
+.tiny {
+  font-size: 5pt;
+  text-align: right;
 }
 
-.clearfix:after {
-   content: " "; /* Older browser do not support empty content */
-   visibility: hidden;
-   display: block;
-   height: 0;
-   clear: both;
- }
-
- .tiny {
-   font-size: 5pt;
-   text-align: right;
- }
-
- .smallprint {
-   font-size: 0.6em;
- }
+.smallprint p {
+  font-size: 0.9em;
+}
 
 
 /* ----------------------------------------
@@ -366,3 +415,4 @@ code .hilight * {
 .language-graphql .remark-code-line { color: #BE6DD8 }
 .language-graphql .token.keyword { color: #BE6DD8 }
 .language-graphql .token.attr-name { color: #56A6ED }
+.language-graphql .token.comment { color: #525865 }
