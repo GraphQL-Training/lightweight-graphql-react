@@ -1177,7 +1177,7 @@ window.fetch("/graphql", {
 ---
 class: has-code
 
-#### The only things that change are the `query` and `variables`, so lets define a function to perform the boilerplate for us:
+### The only things that change are the `query` and `variables`, so lets define a function to perform the boilerplate for us:
 
 ```js
 *function executeGraphQLQuery(query, variables = {}) {
@@ -1490,8 +1490,9 @@ const Root = withGraphQLResult(`
 class: invert center middle
 
 
+# ⚠️
 
-### ⚠️ Simple string concatenation, as we do here, will not allow the same fragment twice - use a tool such as Apollo or Relay to solve this! ⚠️
+### Simple string concatenation, as we do here, will not allow the same fragment twice - use a tool such as Apollo or Relay to solve this!
 
 ---
 class:  chapter-title center middle
@@ -1640,7 +1641,7 @@ const mutationQuery = `
   }`;
 ```
 --
-To perform the mutation, we can use our helper:
+#### To perform the mutation, we can use our helper:
 
 --
 
@@ -1666,30 +1667,30 @@ executeGraphQLQuery(mutationQuery, {
 
 --
 
-Queries and mutations use the same API - `query` and `variables`.
+#### Queries and mutations use the same API - `query` and `variables`.
 
 ---
 
 class: bg-white
 
 
-#### Using the data from the payload we can then update the display.
+### Using the data from the payload we can then update the display.
 
 --
 
-#### Tools like Apollo and Relay manage your store/cache for you and tell React to re-render.
+### Tools like Apollo and Relay manage your store/cache for you and tell React to re-render.
 
 --
 
 
 .codeColorInherit[
-#### Relay uses the global object identifier specification (`GraphQLID`) as the cache key.
+### Relay uses the global object identifier specification (`GraphQLID`) as the cache key.
 ]
 
 --
 
 .codeColorInherit[
-#### Apollo is more flexible, allowing you to specify `dataIdFromObject` (commonly a combination of `__typename` and `id` or similar).
+### Apollo is more flexible, allowing you to specify `dataIdFromObject` (commonly a combination of `__typename` and `id` or similar).
 ]
 
 ---
