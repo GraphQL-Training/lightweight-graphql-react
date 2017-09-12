@@ -227,7 +227,7 @@ fields.
 
 
 ---
-class: has-code
+class: has-code has-code-extra-space
 
 .contextImage[
 ![Spec](images/spec.png)
@@ -249,10 +249,6 @@ Moving this to the side...
 
 --
 
-.hack[
-&nbsp;
-]
-
 
 ```js
 const Header = ({currentUser}) =>
@@ -270,7 +266,7 @@ First we have the header with the website name on the left and the current
 username on the right.
 
 ---
-class: has-code
+class: has-code has-code-extra-space
 
 .contextImage[
 ![Spec](images/spec.png)
@@ -302,10 +298,6 @@ Moving this to the side also...
 
 --
 
-.spaceAtTop[
-]
-
-
 ```js
 class SettingsPage extends React.Component {
   ...
@@ -326,7 +318,8 @@ We then have the main settings page area that is a form containing the name and
 website inputs and a save button.
 
 ---
-class: has-code
+class: has-code has-code-extra-space
+
 
 .contextImage[
 ![Spec](images/spec.png)
@@ -351,10 +344,6 @@ const Header = ({currentUser}) =>
 ```
 ]
 ]
-
-.spaceAtTop[
-]
-
 
 .context[
 ```js
@@ -386,7 +375,7 @@ Pulling these together we have the Layout component which renders both the
 Header and SettingsPage components passing down the currentUser.
 
 ---
-class: has-code
+class: has-code has-code-extra-space
 
 .contextImage[
 ![Spec](images/spec.png)
@@ -411,10 +400,6 @@ const Header = ({currentUser}) =>
 ```
 ]
 ]
-
-.spaceAtTop[
-]
-
 
 .context[
 ```js
@@ -1707,31 +1692,36 @@ class: center middle bg-blue
 
 ---
 
-class: bg-blue
+class: bg-blue compact-paragraphs
 
 .slidesLocation[
 
-@Benjie
-
-Slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
+These slides: [https://is.gd/lightweight_graphql_talk](https://www.graphql-training.com/lightweight-graphql-react/)  
 
 Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTraining/lightweight-graphql-example)
 ]
 
+.authorLocation[
 
-👍 Anatomy of GraphQL queries, mutations & fragments
+[@benjie](https://twitter.com/benjie)
+
+]
+
+
+
+👍 Anatomy of GraphQL queries, mutations & fragments.
 
 --
 
-👍 Use fragments for maintainable DRY data specs
+👍 Use fragments for maintainable DRY data specs.
 
 --
 
-👍 GraphQL terminology: **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**
+👍 GraphQL terminology: **operation type**, **operation name**, **selection set**, **fragments**, **fields**, **variables**, and **arguments**.
 
 --
 
-👍 Overview of a simple read-only GraphQL Schema
+👍 Overview of a simple read-only GraphQL Schema.
 
 --
 
@@ -1739,10 +1729,10 @@ Example repo: [https://is.gd/lightweight_graphql](https://github.com/GraphQLTrai
 .headeredList[
 👍 Performing queries and mutations with `window.fetch()`:
 
-  - `query` string expressing fields to request
-  - `variables` expressing inputs to fields (optional)
+  - `query` string expressing fields to request.
+  - `variables` expressing inputs to fields (optional).
 ]
 
 --
 
-👍 Tooling (e.g. Apollo & Relay) does a lot of work for us
+👍 Tooling (e.g. Apollo & Relay) does a lot of work for us.
