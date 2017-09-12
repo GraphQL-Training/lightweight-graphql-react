@@ -533,7 +533,11 @@ class: has-code
 }
 ```
 
-The query from the previous slide (above) has a few (nested) fields; this structure is called a **selection set** and tells GraphQL exactly what data we want.
+#### The query from the previous slide (above) has a few (nested) fields...
+
+--
+
+#### ...this structure is called a **"selection set"** and tells GraphQL exactly what data we want.
 
 
 ???
@@ -560,7 +564,11 @@ class: has-code
 }
 ```
 
-We can specify the **operation type** `query`; it's optional for queries but required for all other operation types.
+#### We can specify an **"operation type"** (in this case `query`)...
+
+--
+
+#### (Note: it's optional for queries but required for all other operation types such as `mutate`.)
 
 
 ---
@@ -577,7 +585,9 @@ class: has-code
 }
 ```
 
-The **operation name** (`NameAndWebsiteQuery`) is an optional arbitrary name for the query useful for debugging.
+#### The **operation name** (`NameAndWebsiteQuery`) is an optional arbitrary name for the query.
+
+#### It is useful for debugging.
 
 ???
 
@@ -607,9 +617,9 @@ query NameAndWebsiteQuery {
 }
 ```
 
-We can give a field additional data by passing it **arguments**.
+#### We can give a field additional data by passing it **arguments**.
 
-Arguments can be required or optional.
+#### Arguments can be required or optional.
 
 ???
 
@@ -647,8 +657,7 @@ The issue with this query though is that we'd have to issue a different
 
 --
 
-**Variables** (if any) are specified after the query name, and are referenced in
-the field arguments.
+#### **Variables** (if any) are specified after the query name, and are referenced in the field arguments.
 
 
 ???
@@ -728,7 +737,7 @@ class: has-code
 ## GraphQL Schema
 --
 
-The `schema` entry exposes available operations:
+#### The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -750,7 +759,7 @@ class: has-code
 
 ## GraphQL Schema
 
-The `schema` entry exposes available operations:
+#### The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -762,7 +771,7 @@ schema {
 ```
 ???
 
-The schema entry exposes available operations.
+#### The schema entry exposes available operations.
 
 These include:
 - query for reading data
@@ -771,7 +780,7 @@ class: has-code
 
 ## GraphQL Schema
 
-The `schema` entry exposes available operations:
+#### The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -783,7 +792,7 @@ schema {
 ```
 ???
 
-The schema entry exposes available operations.
+#### The schema entry exposes available operations.
 
 These include:
 - query for reading data
@@ -793,7 +802,7 @@ class: has-code
 
 ## GraphQL Schema
 
-The `schema` entry exposes available operations:
+#### The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -805,7 +814,7 @@ schema {
 ```
 ???
 
-The schema entry exposes available operations.
+#### The schema entry exposes available operations.
 
 These include:
 - query for reading data
@@ -818,7 +827,7 @@ class: has-code
 ## GraphQL Schema
 
 .context[
-The `schema` entry exposes available operations:
+#### The `schema` entry exposes available operations:
 
 
 ```graphql
@@ -830,7 +839,7 @@ schema {
 ```
 ]
 
-Our read-only API only has the `query` operation; the fields of which are exposed on the `Query` type:
+#### Our read-only API only has the `query` operation; the fields of which are exposed on the `Query` type:
 
 ```graphql
 schema {
@@ -856,8 +865,7 @@ schema {
 ```
 ]
 
-`Query` is the entry-point for reading data.  
-It defines the fields available at the root level.
+#### `Query` is the entry-point for reading data. It defines the fields available at the root level.
 ```graphql
 type Query {
 ⁣
@@ -881,8 +889,7 @@ schema {
 ```
 ]
 
-`Query` is the entry-point for reading data.  
-It defines the fields available at the root level.
+#### `Query` is the entry-point for reading data. It defines the fields available at the root level.
 ```graphql
 type Query {
   currentUser: ...
@@ -917,7 +924,7 @@ type Query {
 }
 ```
 
-GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+#### GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ---
 class: has-code
 
@@ -937,7 +944,7 @@ type Query {
 * user(id: Int!): User
 }
 ```
-GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+#### GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 
 ???
 
@@ -962,7 +969,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+#### GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 
 ```graphql
 type User {
@@ -990,7 +997,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+#### GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
@@ -1022,7 +1029,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+#### GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
@@ -1055,7 +1062,7 @@ type Query {
 ```
 ]
 
-GraphQL is strongly-typed, so we must specify the type(s) each field can return.
+#### GraphQL is strongly-typed, so we must specify the type(s) each field can return.
 ```graphql
 type User {
   id: Int!
@@ -1441,9 +1448,9 @@ query SettingsPageRootQuery {
 ]
 
 ---
-class: has-code
+class: has-code has-code-extra-space
 
-.contextImage[
+.specImage[
 ![Spec](images/spec.png)
 ]
 
@@ -1468,9 +1475,7 @@ SettingsPage.SettingsPageUserFragment = `
 
 --
 
-.hack[
-#### The final query built via string interpolation:
-]
+##### The final query built via string interpolation:
 
 ```js
 const Root = withGraphQLResult(`
@@ -1492,7 +1497,9 @@ class: invert center middle
 
 # ⚠️
 
-### Simple string concatenation, as we do here, will not allow the same fragment twice - use a tool such as Apollo or Relay to solve this!
+### Simple string concatenation, as we do here, will not allow the same fragment twice.
+
+### Use a tool such as Apollo or Relay to solve this!
 
 ---
 class:  chapter-title center middle
@@ -1504,7 +1511,7 @@ class:  chapter-title center middle
 ---
 class: has-code
 
-Add `avatarUrl` to our React component:
+#### Add `avatarUrl` to our React component:
 
 ```js
 const Header = ({data: {currentUser,
@@ -1520,7 +1527,7 @@ const Header = ({data: {currentUser,
 
 --
 
-Add it to the fragment:
+#### Add it to the fragment:
 
 ```js
 Header.HeaderUserFragment = `
@@ -1548,7 +1555,7 @@ class: has-code
 
 .contextImage[
 .context[
-#### Remember our query anatomy?
+##### Remember our query anatomy?
 ```graphql
 query NameAndWebsiteQuery($id: Int!) {
   user(id: Int!) {
@@ -1575,7 +1582,7 @@ class: has-code
 
 .contextImage[
 .context[
-#### Remember our query anatomy?
+##### Remember our query anatomy?
 ```graphql
 query NameAndWebsiteQuery($id: Int!) {
   user(id: Int!) {

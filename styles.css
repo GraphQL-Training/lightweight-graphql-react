@@ -51,7 +51,7 @@
 
 .remark-code-line-highlighted,
 .remark-code-span-highlighted {
-  background-color: #363C48;
+  background-color: #222;
   border-left: 5px solid #FFFF03;
   border-right: 5px solid #FFFF03;
   margin: 0 -5px;
@@ -76,29 +76,6 @@
 
 .slidesLocation.slidesLocation p {
   margin-bottom: 0rem;
-}
-
-.title-page .react-logo {
-  width: 250px;
-}
-
-.title-page .postgraphql-logo-container {
-  position: absolute;
-  right: 0;
-  bottom: 30px;
-  width: 200px;
-  height: 200px;
-  padding: 0 50px 50px 0;
-}
-
-.title-page .postgraphql-logo {
-  width: 100%;
-  border-radius: 13px;
-}
-
-.postgraphql-logo.h1 {
-  width: 40%;
-  margin-top: 30px;
 }
 
 .codeColorInherit .remark-inline-code {
@@ -153,7 +130,6 @@ html {
 .remark-slide-content h4 { font-size: 1.25rem; }
 .remark-slide-content h5 { font-size: 1rem; }
 .remark-slide-content h6 { font-size: 1rem; }
-
 
 .remark-slide-content p,
 .remark-slide-content li {
@@ -227,6 +203,8 @@ pre + pre {
   background-size: contain;
   background-position: bottom center;
 }
+
+.invert strong { color: #ED2700 }
 
 .invert * { color: white; }
 .invert * .remark-inline-code { color: #dda2ff; }
@@ -307,7 +285,13 @@ pre + pre {
   background-size: contain;
   background-position: bottom center;
 }
+
+.has-code-extra-space {
+  padding: 0.5rem 2rem;
+}
+
 .has-code * { color: white }
+.has-code strong { font-family: Georgia, serif; font-style: italic; color: #8DBB6E }
 
 .remark-code, .remark-inline-code { font-family: Monaco, "Lucida Console", monospace; }
 
@@ -342,21 +326,32 @@ code .hilight * {
 }
 
 .graphiqlImage,
-.contextImage {
-  float: right;
-  margin: 30px;
+.contextImage,
+.specImage {
+  position: absolute;
+  right: 2rem;
+  top: 6rem;
 }
 .graphiqlImage {
-  width: 70%;
-  margin: 0 20px;
+  width: 55%;
 }
 .contextImage {
-  width: 40%;
+  width: 38%;
+}
+
+.contextImage .remark-code {
   font-size: 0.8em;
 }
+
 .graphiqlImage img,
-.contextImage img {
+.contextImage img,
+.specImage img {
   width: 100%;
+}
+
+.specImage {
+  width: 35%;
+  top: 3rem;
 }
 
 .spaceAtTop {
@@ -364,13 +359,13 @@ code .hilight * {
 }
 
 .leftSplit {
-  width: 50%;
+  width: 43%;
   float: left;
 }
 
 .rightSplit {
-  width: 50%;
-  float: left;
+  width: 43%;
+  float: right;
 }
 
 .tiny {
