@@ -1551,7 +1551,7 @@ class: has-code
 #### Remember our query anatomy?
 ```graphql
 query NameAndWebsiteQuery($id: Int!) {
-  user(id: Int!): User
+  user(id: Int!) {
     id
     name
     website
@@ -1578,7 +1578,7 @@ class: has-code
 #### Remember our query anatomy?
 ```graphql
 query NameAndWebsiteQuery($id: Int!) {
-  user(id: Int!): User
+  user(id: Int!) {
     id
     name
     website
