@@ -127,7 +127,7 @@ It's important to recognise that you SHOULD use GraphQL tooling in your
 production projects as it will save you a lot of work and hopefully reduce
 the number of errors.
 
-So without further and do let's get started
+So without further ado let's get started
 
 ---
 class: bg-blue center
@@ -553,7 +553,7 @@ class: has-code
 
 --
 
-#### (Note: it's optional for queries but required for all other operation types such as `mutate`.)
+#### (Note: it's optional for queries but required for all other operation types such as `mutation`.)
 
 
 ---
