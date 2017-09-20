@@ -1275,8 +1275,8 @@ class: has-code
 ### Then every component...
 
 ```js
-const Header = ({ data: { currentUser: { name } } }) =>
-  <nav>... { name } ...</nav>;
+const Header = ({ loading, data }) =>
+  <nav>... { loading ? "Loading..." : data.currentUser.name } ...</nav>;
 ```
 
 --
