@@ -1259,7 +1259,7 @@ const withGraphQLResult = (query, { variables } = {}) => Component =>
       }
     }
     render() {
-      return <Component
+      return <Component {...this.props}
         loading={this.state.loading}
         data={this.state.data}
         error={this.state.error}
