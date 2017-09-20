@@ -90,6 +90,10 @@ class: invert center
 
 ]
 
+.slidesLocation[
+Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
+]
+
 ???
 
 Before we get started a little disclaimer:
@@ -100,10 +104,6 @@ Before we get started a little disclaimer:
 --
 
 ## This talk does not demonstrate best practices!
-
-.slidesLocation[
-Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
-]
 
 
 ???
