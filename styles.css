@@ -68,7 +68,10 @@
   left: 2rem;
   right: 2rem;
   opacity: 0.8;
+  text-align: left;
 }
+
+.slidesLocation a { color: inherit; }
 
 .authorLocation {
   position: absolute;

@@ -32,11 +32,18 @@ class: chapter-title center middle
 
 # Lightweight?
 
+.slidesLocation[
+Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
+]
 
 ---
 class: bg-white
 
 ## What's not discussed:
+
+.slidesLocation[
+Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
+]
 
 ???
 
@@ -94,6 +101,11 @@ Before we get started a little disclaimer:
 
 ## This talk does not demonstrate best practices!
 
+.slidesLocation[
+Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
+]
+
+
 ???
 
 What I will be showing you does not demonstrate best practices!
@@ -112,9 +124,7 @@ Nullam ac lectus at neque convallis tempus. Nam augue
 risus, hendrerit vel ligula sed, sagittis pretium felis. Aenean vitae ipsum nec
 nisl faucibus venenatis. Sed sed blandit diam. Quisque et nunc vel orci
 sollicitudin vestibulum. Donec tempor felis nec mauris fermentum, id placerat
-lorem luctus. Fusce molestie augue ultrices, efficitur arcu sit amet, accumsan
-tortor. Vivamus facilisis sapien non sagittis feugiat. Nam dignissim dictum
-finibus. Donec sed nisl eget risus dictum gravida. Sed sit amet nulla sapien.
+lorem luctus.
 
 ]
 
