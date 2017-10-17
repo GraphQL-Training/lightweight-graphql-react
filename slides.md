@@ -4,7 +4,8 @@ class: title-page bg-blue-home
 
 ### Benjie Gillam (@Benjie)
 
-GraphQL Trainer  
+GraphQL Trainer at [graphql-training.com](https://graphql-training.com)
+
 [PostGraphQL](https://github.com/postgraphql/postgraphql) OSS maintainer
 
 .slidesLocation[
