@@ -293,10 +293,6 @@ pre + pre {
   background: #101010;
   padding: 2rem 2rem;
   color: white;
-  background-image: url('images/light-graph-null.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
 }
 
 .has-code-extra-space {
