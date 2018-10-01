@@ -4,9 +4,8 @@ class: title-page bg-blue-home
 
 ### Benjie Gillam (@Benjie)
 
-GraphQL Trainer at [graphql-training.com](https://graphql-training.com)
-
-[PostGraphQL](https://github.com/postgraphql/postgraphql) OSS maintainer
+GraphQL Trainer at [graphql-training.com](https://graphql-training.com)  
+[PostGraphile](https://graphile.org/postgraphile/) OSS maintainer
 
 .slidesLocation[
 
@@ -15,14 +14,10 @@ Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweig
 
 ???
 
-Hello everyone I'm Benjie Gillam.
-
-I'm a freelance software developer, working on Postgres, Node.js, GraphQL and
-React projects.
-
-I'm also a GraphQL trainer and the maintainer of the open source PostGraphQL
-project which **allows you to create a full GraphQL API from your Postgres
-database schema in a instant - you should check it out!**
+Hello everyone I'm Benjie, a GraphQL trainer and the maintainer of the
+open-source PostGraphile project which **allows you to create a full GraphQL
+API from your Postgres database schema in a instant - you should check it
+out!**
 
 But I'm not going to be talking about that today; instead we're going to be
 talking about how to make a lightweight GraphQL app.
@@ -37,6 +32,10 @@ class: chapter-title center middle
 Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweight_graphql_talk)
 ]
 
+???
+
+So what do I mean by a lightweight GraphQL app?
+
 ---
 class: bg-white
 
@@ -49,11 +48,11 @@ Follow along at [https://is.gd/lightweight_graphql_talk](https://is.gd/lightweig
 ???
 
 So what do I mean by a lightweight GraphQL app? Well we won't be using using
-any of the GraphQL tooling such as Apollo or Relay. We won't be using
-JavaScript tooling such as webpack or browserify. We will not be delving into the
+any of the ⏭ GraphQL tooling such as Apollo or Relay. We won't be using
+⏭ JavaScript tooling such as webpack or browserify. We will not be ⏭ delving into the
 server side.
 
-We will just be using vanilla JS, window.fetch() and of course react!
+⏭ We will just be using ⏭ vanilla JS, ⏭ window.fetch() and ⏭ react!
 
 --
 
@@ -135,8 +134,8 @@ We are deliberately not using the GraphQL tooling because we want to understand
 what is going on under the hood.
 
 It's important to recognise that you SHOULD use GraphQL tooling in your
-production projects as it will save you a lot of work and hopefully reduce
-the number of errors.
+production projects as it will save you a lot of work and result in a
+better experience for your users.
 
 So without further ado let's get started
 
@@ -459,9 +458,7 @@ class:  chapter-title center middle
 ???
 
 The backend engineer has got in touch and she has informed us that
-
-**a basic read-only GraphQL API** is now available to us which
-
+**a basic read-only GraphQL API** is now available to use which
 we should **use instead of the mock data** we were given before.
 
 But before we can query this data we need to understand a little bit about
@@ -564,7 +561,7 @@ class: has-code
 
 --
 
-#### (Note: it's optional for queries but required for all other operation types such as `mutation`.)
+#### (Note: it's optional for queries but required for all other operation types such as `mutation` and `subscription`.)
 
 
 ---
@@ -731,9 +728,14 @@ class: bg-blue center middle
 class: has-code
 
 ## GraphQL Schema
+
+???
+
+We typically talk about GraphQL Schemas using GraphQL SDL, which is a human-
+and machine- readable format common to most GraphQL implementations.
 --
 
-#### The `schema` entry exposes available operations:
+#### The `schema` definition exposes available operations:
 
 
 ```graphql
@@ -755,7 +757,7 @@ class: has-code
 
 ## GraphQL Schema
 
-#### The `schema` entry exposes available operations:
+#### The `schema` definition exposes available operations:
 
 
 ```graphql
@@ -767,7 +769,7 @@ schema {
 ```
 ???
 
-#### The schema entry exposes available operations.
+#### The schema definition exposes available operations.
 
 These include:
 - query for reading data
@@ -776,7 +778,7 @@ class: has-code
 
 ## GraphQL Schema
 
-#### The `schema` entry exposes available operations:
+#### The `schema` definition exposes available operations:
 
 
 ```graphql
@@ -788,7 +790,7 @@ schema {
 ```
 ???
 
-#### The schema entry exposes available operations.
+#### The schema definition exposes available operations.
 
 These include:
 - query for reading data
@@ -798,7 +800,7 @@ class: has-code
 
 ## GraphQL Schema
 
-#### The `schema` entry exposes available operations:
+#### The `schema` definition exposes available operations:
 
 
 ```graphql
@@ -810,7 +812,7 @@ schema {
 ```
 ???
 
-#### The schema entry exposes available operations.
+#### The schema definition exposes available operations.
 
 These include:
 - query for reading data
@@ -823,7 +825,7 @@ class: has-code
 ## GraphQL Schema
 
 .context[
-#### The `schema` entry exposes available operations:
+#### The `schema` definition exposes available operations:
 
 
 ```graphql
@@ -1145,6 +1147,9 @@ class:  chapter-title center middle
 
 # Step 2b: Querying
 
+???
+
+So now we understand the GraphQL schema definition, how do we query it?
 
 ---
 class: has-code
@@ -1510,12 +1515,13 @@ class: has-code
 #### Add `avatarUrl` to our React component:
 
 ```js
-const Header = ({data: {currentUser,
-* avatarUrl}}) =>
+const Header = ({data: {currentUser}}) =>
   <nav><a href='/'>MyWebsite</a>
     {currentUser
       ? <a>
-*         {avatarUrl && <img src={avatarUrl} />}
+*         {currentUser.avatarUrl
+*           ? <img src={currentUser.avatarUrl} />
+*           : null}
           {currentUser.name}
         </a>
       : <a href='/login'>Login</a>}</nav>;
